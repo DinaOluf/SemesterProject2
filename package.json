@@ -1,0 +1,46 @@
+{
+  "name": "semesterproject2",
+  "version": "0.0.1",
+  "description": "An auction website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "sass src/scss:dist/css",
+    "watch": "sass --watch src/scss:dist/css & live-server",
+    "lint": "eslint src/**/*.js",
+    "lint-fix": "eslint src/**/*.js --fix",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DinaOluf/SemesterProject2.git"
+  },
+  "keywords": [
+    "auction",
+    "api",
+    "bootstrap",
+    "js",
+    "pearls"
+  ],
+  "author": "Dina Olufsen",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/DinaOluf/SemesterProject2/issues"
+  },
+  "homepage": "https://github.com/DinaOluf/SemesterProject2#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.27.0",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.0.3",
+    "live-server": "^1.2.2",
+    "prettier": "^2.7.1",
+    "sass": "^1.56.1"
+  },
+  "lint-staged": {
+    "*.{js,html,scss}": "prettier --write",
+    "*.js": "eslint --fix"
+  }
+}
