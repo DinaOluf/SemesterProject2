@@ -1,2 +1,72 @@
+@import "./variables";
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
+body {
+    background: rgb(0,39,71);
+    background: -webkit-linear-gradient(0deg, rgba(0,39,71,1) 0%, rgba(0,80,146,1) 100%);
+    background: linear-gradient(0deg, rgba(0,39,71,1) 0%, rgba(0,80,146,1) 100%);
+}
+
+header {
+    & #brand-icon {
+        height: 4rem;
+    }
+
+    & form {
+        & #header-search-icon {
+            max-height: 2rem;
+            max-width: 2rem;
+        }
+        & .search-input {
+            width: 100%;
+            border: none;
+
+            &:focus {
+                box-shadow: none;
+            }
+        }
+    }
+
+    & .dropdown-toggle {
+        width: 4rem;
+        & #header-profile-icon {
+            height: 4rem;
+        }
+        &::after {
+            border: none;
+        }
+    }
+}
+
+@media (max-width: 766px) {
+    #brand-name {
+        font-size: 1.3em;
+    }
+    form {
+        max-height: 4rem;
+        #header-search-icon {
+            height: 2rem;
+            width: 2rem;
+        }
+        & .search-input {
+            max-height: 2rem;
+        }
+    }
+}
+
+@media (max-width: 575px) { 
+    header {
+        & #brand-icon {
+            height: 3rem;
+        }
+
+        & .dropdown-toggle {
+            width: 3rem;
+            height: 3rem;
+
+            & #header-profile-icon {
+                height: 3rem;
+            }
+        }
+    }
+}
