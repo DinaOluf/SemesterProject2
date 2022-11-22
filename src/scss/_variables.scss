@@ -1,28 +1,35 @@
 @font-face {
-    font-family: "Aqua";
-    src: url("../../assets/fonts/aqua.ttf") format("truetype");
+  font-family: "Aqua";
+  src: url("../../assets/fonts/aqua.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: "Merriweather";
-    src: url("../../assets/fonts/merriweather.regular.ttf") format("truetype");
+  font-family: "Merriweather";
+  src: url("../../assets/fonts/merriweather.regular.ttf") format("truetype");
 }
 
 //COLOURS
 
-$primary:       #002747;
-$secondary:     #8FCBEB;
-$danger:        #BEA6FF;
-$light:         #FFFFFF;
-$dark:          #292C35;
-
+$primary: #002747;
+$secondary: #8fcbeb;
+$danger: #bea6ff;
+$light: #ffffff;
+$dark: #292c35;
 
 //FONTS
 
-h1, h2 {
-    font-family: "Aqua";
+h1,
+h2 {
+  font-family: "Aqua";
 }
 
-h3, h4, h5, p, li, span, div, form {
-    font-family: "Merriweather";
+h3,
+h4,
+h5,
+p,
+li,
+span,
+div,
+form {
+  font-family: "Merriweather";
 }

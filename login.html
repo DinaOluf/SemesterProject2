@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ADD DESCRIPTION HERE --------" />
+    <meta author="Dina Olufsen" />
+    <title>Pearls | Log in</title>
+    <link rel="stylesheet" href="./dist/css/styles.css" />
+  </head>
+  <body id="login" class="min-vh-100 overflow-hidden position-relative">
+    <header class="d-flex navbar bg-dark justify-content-between">
+      <div class="row navbar-brand align-items-center mx-0 w-75">
+        <a
+          href="./index.html"
+          class="col-3 col-sm-5 col-lg-4 col-xxl-3 d-flex align-items-center text-decoration-none"
+        >
+          <img src="./assets/icons/light-pearl-icon.png" id="brand-icon" />
+          <span
+            id="brand-name"
+            class="d-none d-sm-block h1 mb-0 mt-2 ms-2 text-light text-uppercase"
+            >Pearls</span
+          >
+        </a>
+        <!-- <div class="col-8 col-sm-6 col-md-5 col-lg-4 col-xxl-3">
+            <form
+              class="d-flex bg-secondary rounded h-100 p-1 align-items-center"
+              onsubmit=""
+            >
+              <img
+                src="./assets/icons/search-icon.png"
+                id="header-search-icon"
+                class="search-icon p-0"
+              />
+              <input class="bg-secondary search-input form-control" />
+            </form>
+          </div> -->
+      </div>
+      <div class="d-flex nav-item dropdown w-25 justify-content-end">
+        <!-- <a
+            class="nav-link dropdown-toggle me-3"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <img
+              src="./assets/icons/profile-icon.png"
+              alt="Empty profile picture, as well as dropdown menu"
+              id="header-profile-icon"
+            />
+          </a>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="dropdownAccountButton"
+          >
+            <li><a class="dropdown-item" href="/profile.html">Profile</a></li>
+            <li><a class="dropdown-item" href="">Log Out</a></li>
+          </ul> -->
+        <a
+          class="btn btn-primary me-2 text-secondary border border-secondary"
+          href="./login.html"
+          >Log in</a
+        >
+      </div>
+    </header>
+    <main>
+      <div class="container position-relative">
+        <div class="row d-flex justify-content-center mt-5">
+          <form class="col-6 card bg-dark text-light p-5">
+            <h1 class="fs-2 text-uppercase">Log in</h1>
+            <label class="fs-4 mt-4" for="emailInput">E-mail</label>
+            <input id="emailInput" class="bg-secondary p-1 rounded" />
+            <div class="text-secondary">Please enter your e-mail address</div>
+            <label class="fs-4 mt-4" for="emailInput">E-mail</label>
+            <input id="emailInput" class="bg-secondary p-1 rounded" />
+            <div class="text-secondary">Please enter your e-mail address</div>
+            <button
+              class="btn btn-primary text-secondary border border-secondary"
+            >
+              Log in
+            </button>
+            <div>
+              Don't have a user yet?
+              <a href="./signup.html" class="text-secondary">Sign up!</a>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div id="bg-image" class="position-absolute top-0 end-0"></div>
+    </main>
+    <script src="./node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
