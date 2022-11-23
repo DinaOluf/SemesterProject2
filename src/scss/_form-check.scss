@@ -1,0 +1,7 @@
+.form-check-input {
+  background-color: $secondary !important;
+
+  &:checked {
+    background-color: $primary !important;
+  }
+}
