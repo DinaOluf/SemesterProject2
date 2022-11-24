@@ -43,14 +43,11 @@ form {
   & .form-control,
   & .search-input {
     border: none;
+    width: 100%;
 
     &:focus {
       box-shadow: none;
     }
-  }
-
-  & .search-input {
-    width: 100%;
   }
 }
 
@@ -62,6 +59,26 @@ form {
   background-position-y: bottom;
   background-position-x: 45%;
   z-index: 1;
+}
+
+.profile-images {
+  height: 3rem;
+  width: 3rem;
+}
+
+.listings-images {
+  height: 28rem;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    min-height: 100%;
+  }
+}
+
+.currency-icon {
+  height: 1.2rem;
+  width: 1.2rem;
 }
 
 // WELCOME
@@ -101,6 +118,23 @@ form {
 #signup {
   .container {
     z-index: 4;
+  }
+}
+
+// LISTING
+#listing {
+  #bidBtn {
+    max-width: 8rem;
+  }
+
+  .listing-image {
+    height: 40rem;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      min-height: 100%;
+    }
   }
 }
 
@@ -188,6 +222,10 @@ form {
     }
   }
 
+  .listings-images {
+    height: 16rem;
+  }
+
   #login,
   #signup {
     #bg-image {
@@ -200,6 +238,14 @@ form {
       & #rememberCheck {
         width: 1rem;
         height: 1rem;
+      }
+    }
+  }
+
+  #listing {
+    .make-bid {
+      h2 {
+        font-size: 1.45rem;
       }
     }
   }

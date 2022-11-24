@@ -9,10 +9,7 @@
     <title>Pearls | listing</title>
     <link rel="stylesheet" href="./dist/css/styles.css" />
   </head>
-  <body
-    id="listing"
-    class="d-flex flex-column justify-content-between min-vh-100"
-  >
+  <body id="listing" class="d-flex flex-column min-vh-100">
     <header class="d-flex navbar bg-dark justify-content-between">
       <div class="row navbar-brand align-items-center mx-0 w-75">
         <a
@@ -26,52 +23,140 @@
             >Pearls</span
           >
         </a>
-        <!-- <div class="col-8 col-sm-6 col-md-5 col-lg-4 col-xxl-3">
-            <form
-              class="d-flex bg-secondary rounded h-100 p-1 align-items-center"
-              onsubmit=""
-            >
-              <img
-                src="./assets/icons/search-icon.png"
-                id="header-search-icon"
-                class="search-icon p-0"
-              />
-              <input id="searchInput" class="bg-secondary search-input form-control" />
-            </form>
-          </div> -->
-      </div>
-      <div class="d-flex nav-item dropdown w-25 justify-content-end">
-        <!-- <a
-            class="nav-link dropdown-toggle me-3"
-            href="#"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
+        <div class="col-8 col-sm-6 col-md-5 col-lg-4 col-xxl-3">
+          <form
+            class="d-flex bg-secondary rounded h-100 p-1 align-items-center"
+            onsubmit=""
           >
             <img
-              src="./assets/icons/profile-icon.png"
-              alt="Empty profile picture, as well as dropdown menu"
-              id="header-profile-icon"
+              src="./assets/icons/search-icon.png"
+              id="header-search-icon"
+              class="search-icon p-0"
             />
-          </a>
-          <ul
-            class="dropdown-menu dropdown-menu-end"
-            aria-labelledby="dropdownAccountButton"
-          >
-            <li><a class="dropdown-item" href="/profile.html">Profile</a></li>
-            <li><a class="dropdown-item" href="">Log Out</a></li>
-          </ul> -->
+            <input
+              id="searchInput"
+              class="bg-secondary search-input form-control"
+            />
+          </form>
+        </div>
+      </div>
+      <div class="d-flex nav-item dropdown w-25 justify-content-end">
         <a
-          class="btn btn-primary me-2 text-secondary border border-secondary"
-          href="./login.html"
-          >Log in</a
+          class="nav-link dropdown-toggle me-3"
+          href="#"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
         >
+          <img
+            src="./assets/icons/profile-icon.png"
+            alt="Empty profile picture, as well as dropdown menu"
+            id="header-profile-icon"
+          />
+        </a>
+        <ul
+          class="dropdown-menu dropdown-menu-end"
+          aria-labelledby="dropdownAccountButton"
+        >
+          <li><a class="dropdown-item" href="/profile.html">Profile</a></li>
+          <li><a class="dropdown-item" href="">Log Out</a></li>
+        </ul>
       </div>
     </header>
-    <main></main>
+    <main class="container my-4">
+      <div class="row justify-content-center">
+        <div class="col-11 col-md-9 placeholder-glow">
+          <div class="d-flex">
+            <h1 id="listingName" class="text-uppercase text-light placeholder">
+              Listing name
+            </h1>
+            <div id="tags" class="px-2 d-flex justify-content-center mb-2">
+              <!-- <div
+                class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 m-auto"
+              >
+                TAGS
+              </div> -->
+            </div>
+          </div>
+          <div class="card bg-dark py-2 placeholder-glow">
+            <div class="ps-2 d-flex align-items-center">
+              <div class="d-flex align-items-center text-secondary">
+                <!-- <a
+                  href="#"
+                  class="text-decoration-none d-flex align-items-center"
+                > -->
+                <img
+                  id="userImage"
+                  class="profile-images placeholder rounded-circle"
+                />
+                <h2 id="userName" class="h3 m-0 ms-2 fs-4 placeholder">Name</h2>
+                <!-- </a> -->
+              </div>
+              <div class="owners-options text-light"></div>
+            </div>
+            <div
+              class="listing-image mt-2 w-100 overflow-hidden position-relative"
+            >
+              <img
+                id="listingImage"
+                class="position-absolute bottom-0 placeholder text-secondary"
+              />
+            </div>
+            <div class="listings-descriptions mx-2 mt-2 text-light placeholder">
+              Description
+            </div>
+            <div class="text-secondary mx-2 mt-2 d-flex">
+              <div class="bids-count me-1 placeholder">1 bid(s) -</div>
+              <div class="dates-end placeholder">End: 23:59 18/12/2022</div>
+            </div>
+          </div>
+          <div class="mt-4 mb-5">
+            <!-- <div class="card bg-dark py-2">
+              <div class="ps-2 d-flex align-items-center">
+                <a
+                  href="#"
+                  class="text-decoration-none d-flex align-items-center"
+                >
+                  <img
+                    src="./assets/icons/profile-icon.png"
+                    class="profile-images"
+                  />
+                  <div class="m-0 ms-2 fw-bold">
+                    Name
+                  </div>
+                </a>
+                <div class="ms-3 text-light">Bid: <span class="bid">100</span><img src="./assets/icons/currency-icon.png" class="currency-icon ms-1"></div>
+              </div>
+            </div> -->
+
+            <!-- <div class="d-flex justify-content-center p-2 bg-secondary rounded border border-primary">
+              <div class="text-primary">No bid has been made.</div>
+            </div> -->
+          </div>
+          <div class="mb-5">
+            <div class="make-bid">
+              <!-- <h2 class="text-uppercase text-light">Want to make a bid?</h2>
+              <div class="card bg-dark py-3 px-4">
+                <div id="bidFeedback" class="d-flex justify-content-center text-danger border-danger"></div>
+                <div class="text-light fs-5">Amount</div>
+                <form class="d-flex gap-2">
+                  <input id="bidInput" class="bg-secondary search-input form-control mh-100" />
+                  <button id="bidBtn" class="btn btn-primary border border-secondary text-secondary py-1 w-75">Send bid</button>
+                </form>
+                <div class="text-secondary fs-6">Your credits: <span id="creditAmount">1000</span><img src="./assets/icons/currency-icon.png" class="currency-icon ms-1"></div>
+              </div> -->
+
+              <!-- <div class="d-flex justify-content-center p-2 bg-danger rounded border border-primary">
+                <div class="text-primary">Time has ran out for this listing.</div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
     <footer
-      class="bg-dark d-flex justify-content-between align-items-center py-2 px-4 text-light"
+      class="bg-dark d-flex justify-content-between align-items-center py-2 px-4 text-light mt-auto"
     >
       <div class="fs-6">© Dina Olufsen - 2022</div>
       <div id="arrowUp" class="fs-3">🡱</div>

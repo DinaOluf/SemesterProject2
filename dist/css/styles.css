@@ -11159,13 +11159,11 @@ form #header-search-icon {
 form .form-control,
 form .search-input {
   border: none;
+  width: 100%;
 }
 form .form-control:focus,
 form .search-input:focus {
   box-shadow: none;
-}
-form .search-input {
-  width: 100%;
 }
 
 #bg-image {
@@ -11176,6 +11174,25 @@ form .search-input {
   background-position-y: bottom;
   background-position-x: 45%;
   z-index: 1;
+}
+
+.profile-images {
+  height: 3rem;
+  width: 3rem;
+}
+
+.listings-images {
+  height: 28rem;
+}
+.listings-images img {
+  object-fit: cover;
+  width: 100%;
+  min-height: 100%;
+}
+
+.currency-icon {
+  height: 1.2rem;
+  width: 1.2rem;
 }
 
 #welcome main #welcome-text {
@@ -11202,6 +11219,18 @@ form .search-input {
 #login .container,
 #signup .container {
   z-index: 4;
+}
+
+#listing #bidBtn {
+  max-width: 8rem;
+}
+#listing .listing-image {
+  height: 40rem;
+}
+#listing .listing-image img {
+  object-fit: cover;
+  width: 100%;
+  min-height: 100%;
 }
 
 @media (max-width: 766px) {
@@ -11270,6 +11299,9 @@ form .search-input {
   header .dropdown-toggle #header-profile-icon {
     height: 3rem;
   }
+  .listings-images {
+    height: 16rem;
+  }
   #login #bg-image,
   #signup #bg-image {
     width: 50%;
@@ -11282,6 +11314,10 @@ form .search-input {
   #signup form #rememberCheck {
     width: 1rem;
     height: 1rem;
+  }
+  #listing .make-bid h2,
+  #listing .make-bid .h2 {
+    font-size: 1.45rem;
   }
 }
 

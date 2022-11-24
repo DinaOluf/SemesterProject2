@@ -62,51 +62,60 @@
             <li><a class="dropdown-item" href="/profile.html">Profile</a></li>
             <li><a class="dropdown-item" href="">Log Out</a></li>
           </ul> -->
-        <a
+        <!-- <a
           class="btn btn-primary me-2 text-secondary border border-secondary"
           href="./login.html"
           >Log in</a
-        >
+        > -->
       </div>
     </header>
     <main class="container my-4">
       <div class="row justify-content-center">
-        <div class="col-9">
-          <h1 class="text-uppercase text-light">
+        <div class="col-11 col-md-9">
+          <h1 class="text-uppercase text-light placeholder-glow">
             Ocean of Auctions
-            <span class="text-capitalize text-secondary fs-4">Search ""</span>
+            <span class="text-capitalize text-secondary fs-4 placeholder"
+              >Search ""</span
+            >
           </h1>
           <div class="search-results">
-            <div class="card bg-dark py-2">
+            <div class="card bg-dark py-2 placeholder-glow">
               <div id="tags" class="ps-2">
-                <div
-                  class="badge bg-secondary text-primary rounded-pill px-3 py-2"
+                <!-- <div
+                  class="badge bg-secondary text-primary rounded-pill px-3 py-2 mb-2"
                 >
                   hello
-                </div>
+                </div> -->
               </div>
-              <div class="ps-2 mt-2">
+              <div class="ps-2 d-flex align-items-center">
                 <a
                   href="#"
-                  class="d-flex align-items-center text-decoration-none"
+                  class="text-decoration-none d-flex align-items-center"
+                >
+                  <img class="profile-images placeholder rounded-circle" />
+                  <h2 class="h3 m-0 ms-2 fs-4 placeholder">Name</h2>
+                </a>
+                <!-- <span class="mx-2 text-light">-</span> -->
+                <!-- make the span below anchor tag and remove ms-2, as well as un-commenting the span above -->
+                <!-- <span class="text-light text-decoration-none fs-4 ms-2">- Item</span> -->
+              </div>
+              <a href="#">
+                <div
+                  class="listings-images mt-2 w-100 overflow-hidden position-relative"
                 >
                   <img
-                    src="./assets/icons/profile-icon.png"
-                    alt="Empty profile picture, as well as dropdown menu"
-                    class="profile-images"
+                    class="position-absolute bottom-0 placeholder text-secondary"
                   />
-                  <h2 class="h3 ms-2 fs-4">
-                    Name - <span class="text-light">Item</span>
-                  </h2>
-                </a>
+                </div>
+              </a>
+              <div
+                class="listings-descriptions mx-2 mt-2 text-light placeholder"
+              >
+                Description
               </div>
-              <div class="listings-images mt-2 w-100">
-                <img src="./assets/images/pearls-ring.jpg" class="w-100" />
-              </div>
-              <div class="listings-descriptions ms-2 mt-2"></div>
-              <div class="text-secondary ms-2 mt-2 d-flex">
-                <div class="bids-count me-1">1 bid(s) -</div>
-                <div class="dates-end">End: 23:59 18/12/2022</div>
+              <div class="text-secondary mx-2 mt-2 d-flex">
+                <div class="bids-count me-1 placeholder">1 bid(s) -</div>
+                <div class="dates-end placeholder">End: 23:59 18/12/2022</div>
               </div>
             </div>
           </div>
