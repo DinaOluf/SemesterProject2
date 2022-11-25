@@ -22,6 +22,8 @@ $link-color: $secondary;
 
 //FONTS
 
+$body-color: $light;
+
 h1,
 h2 {
   font-family: "Aqua";
@@ -37,3 +39,15 @@ div,
 form {
   font-family: "Merriweather";
 }
+
+
+//ACCORDION
+
+$accordion-color:                         $light; // Sass variable because of $accordion-button-icon
+$accordion-bg:                            $dark;
+$accordion-border-color:                  $dark;
+
+$accordion-button-active-bg:              $dark;
+$accordion-button-active-color:           $light;
+
+$accordion-button-focus-box-shadow:       $light;
