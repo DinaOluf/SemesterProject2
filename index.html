@@ -35,7 +35,7 @@
             />
             <input
               id="searchInput"
-              class="bg-secondary search-input form-control"
+              class="bg-secondary text-dark search-input form-control"
             />
           </form>
         </div>
@@ -71,47 +71,83 @@
     </header>
     <main class="container my-4">
       <div class="row justify-content-center">
-        <div class="col-11 col-md-9">
+        <div class="col-11 col-md-10 col-lg-9 col-xl-8">
           <h1 class="text-uppercase text-light placeholder-glow">
             Ocean of Auctions
           </h1>
           <div class="accordion mb-4" id="accordionAuction">
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingAuction">
-                <button class="accordion-button text-uppercase fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <button
+                  class="accordion-button text-uppercase fs-5"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne"
+                >
                   Make an auction
                 </button>
               </h2>
-              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionAuction">
+              <div
+                id="collapseOne"
+                class="accordion-collapse collapse show"
+                aria-labelledby="headingOne"
+                data-bs-parent="#accordionAuction"
+              >
                 <div class="accordion-body">
-                  <form
-                    class="row flex-column flex-nowrap mh-100"
-                  >
+                  <form class="row flex-column flex-nowrap mh-100">
                     <div class="col-12 col-sm-10 col-md-8">
-                      <label class="" for="titleInput">Title*</label>
+                      <label for="titleInput">Title*</label>
                       <input
                         id="titleInput"
                         class="bg-secondary p-1 rounded form-control text-dark"
                       />
                     </div>
-                    <div class="col-10 col-sm-7 col-md-6 col-lg-4">
-                      <label class="mt-3" for="dateInput">Date and Time</label>
+                    <div class="col-10 col-sm-7 col-md-6 col-lg-4 mt-3">
+                      <label for="dateInput">Date and Time</label>
                       <input
                         id="dateInput"
                         type="datetime-local"
                         class="bg-secondary p-1 rounded form-control text-dark"
                       />
                     </div>
-                    <div>
-                      <label class="mt-3" for="descInput">Description</label>
+                    <div class="mt-3">
+                      <label for="descInput">Description</label>
                       <textarea
                         id="descInput"
                         class="bg-secondary p-1 rounded form-control text-dark"
                       ></textarea>
                     </div>
-                    <div>                    
+                    <div class="mt-3">
+                      <label for="imageInput"
+                        >Image Direct Link
+                        <span class="text-secondary"
+                          >(generate on
+                          <a href="https://postimages.org/">PostImages.org</a
+                          >)</span
+                        ></label
+                      >
+                      <input
+                        id="imageInput"
+                        class="bg-secondary p-1 rounded form-control text-dark"
+                      />
+                    </div>
+                    <div class="col-12 col-sm-10 col-md-8 mt-3">
+                      <label for="tagsInput"
+                        >Tags
+                        <span class="text-secondary"
+                          >(separated by comma, eg. "Pearl, Ring")</span
+                        ></label
+                      >
+                      <input
+                        id="tagsInput"
+                        class="bg-secondary p-1 rounded form-control text-dark"
+                      />
+                    </div>
+                    <div>
                       <button
-                      class="btn btn-primary text-secondary border border-secondary align-self-center mt-3 px-5"
+                        class="btn btn-primary text-secondary border border-secondary align-self-center mt-3 px-5"
                       >
                         List item
                       </button>
@@ -121,7 +157,7 @@
               </div>
             </div>
           </div>
-          <div class="search-results">
+          <div class="posts-container">
             <div class="card bg-dark py-2 placeholder-glow">
               <div class="d-flex justify-content-between">
                 <div id="tags" class="px-2">
@@ -161,9 +197,7 @@
                   />
                 </div>
               </a>
-              <div
-                class="listings-descriptions mx-2 mt-2 placeholder"
-              >
+              <div class="listings-descriptions mx-2 mt-2 placeholder">
                 Description
               </div>
               <div class="text-secondary mx-2 mt-2 d-flex">

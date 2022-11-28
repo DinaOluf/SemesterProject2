@@ -116,25 +116,33 @@ form {
 // LOGIN & SIGNUP
 #login,
 #signup {
-  .container {
+  & .container {
     z-index: 4;
   }
 }
 
 // LISTING
 #listing {
-  #bidBtn {
+  & #bidBtn {
     max-width: 8rem;
   }
 
   .listing-image {
     height: 40rem;
 
-    img {
+    & img {
       object-fit: cover;
       width: 100%;
       min-height: 100%;
     }
+  }
+}
+
+//PROFILE
+#profile {
+  & #profileImage {
+    height: 5rem;
+    width: 5rem;
   }
 }
 
@@ -200,6 +208,24 @@ form {
         & .justify-content-evenly {
           max-width: 20rem;
           width: 100% !important;
+        }
+      }
+    }
+  }
+
+  //PROFILE
+  #profile {
+    & #profileBorder {
+      border-right: 0 !important;
+      margin-bottom: 2rem;
+
+      & #profileCard {
+        border-radius: 0 10px 10px 0;
+
+        & #profileImage {
+          margin-left: 0.5rem;
+          height: 8rem;
+          width: 8rem;
         }
       }
     }
