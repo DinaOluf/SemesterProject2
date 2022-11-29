@@ -58,17 +58,19 @@
     </header>
     <main>
       <div class="container position-relative mb-5">
-        <div class="row d-flex justify-content-center mt-2">
+        <div class="row d-flex justify-content-center mt-4">
           <form class="col-11 col-md-8 col-lg-6 card bg-dark p-5 mh-100">
-            <h1 class="fs-2 text-uppercase mb-4">Sign up</h1>
-            <label class="fs-5" for="nameInput">Username</label>
+            <h1 class="fs-2 text-uppercase mb-3">Sign up</h1>
+            <div class="errorFeedback text-danger text-center rounded"></div>
+            <label class="fs-5 mt-2" for="nameInput">Username</label>
             <input
               id="nameInput"
-              type="email"
+              type="text"
               class="bg-secondary p-1 rounded form-control text-dark"
             />
-            <div id="nameFeedback" class="text-secondary">
-              Please enter an unused username
+            <div id="nameFeedback">
+              Please enter an unused username <br>
+              (At least 4 characters)
             </div>
             <label class="fs-5 mt-3" for="emailInput">E-mail</label>
             <input
@@ -76,7 +78,7 @@
               type="email"
               class="bg-secondary p-1 rounded form-control text-dark"
             />
-            <div id="mailFeedback" class="text-secondary">
+            <div id="emailFeedback">
               Please enter a valid student Noroff E-mail <br />(ending in
               @stud.noroff.no)
             </div>
@@ -84,14 +86,16 @@
             <label class="fs-5 mt-3" for="passwordInput">Password</label>
             <input
               id="passwordInput"
+              title="Must contain between 8 and 20 characters."
               type="password"
               class="bg-secondary p-1 rounded form-control text-dark"
             />
-            <div id="passwordFeedback" class="text-secondary">
-              Please enter a valid password <br />(containing at least 1 capital
+            <div id="passwordFeedback">
+              Please enter a valid password <br />(containing 8-20 characters, <br>at least 1 capital
               letter and 1 number)
             </div>
-            <button
+            <button 
+              type="submit"
               class="btn btn-primary text-secondary border border-secondary align-self-center mt-3 px-5"
             >
               Sign up
@@ -105,8 +109,9 @@
       </div>
       <div id="bg-image" class="position-absolute top-0 end-0"></div>
     </main>
-    <footer class="mt-5"></footer>
+    <footer class="mt-auto"></footer>
     <script src="./node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
     <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="module" src="./src/js/signup.js"></script>
   </body>
 </html>

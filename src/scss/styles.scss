@@ -119,6 +119,12 @@ form {
   & .container {
     z-index: 4;
   }
+
+  & #nameFeedback,
+  & #emailFeedback,
+  & #passwordFeedback {
+    color: $secondary;
+  }
 }
 
 // LISTING
