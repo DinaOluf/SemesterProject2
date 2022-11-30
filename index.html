@@ -157,6 +157,14 @@
               </div>
             </div>
           </div>
+          <div class="row mb-2 mx-0 justify-content-end">
+            <select class="rounded bg-dark border border-dark text-light px-3 py-1 col-4 col-sm-3" id="filterSelect">
+              <option value="default">Filter...</option>
+              <option value="following" id="filterFollowing">Following</option>
+              <option value="newest" id="filterByLatestPosts">Latest posts</option>
+              <option value="oldest" id="filterByOldest">Oldest posts</option>
+          </select>
+          </div>
           <div class="posts-container">
             <div class="card bg-dark py-2 placeholder-glow">
               <div class="d-flex justify-content-between">
@@ -217,5 +225,6 @@
     </footer>
     <script src="./node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
     <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./src/js/index.js"></script>
   </body>
 </html>
