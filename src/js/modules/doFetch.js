@@ -6,14 +6,14 @@
  * @example
  * ```js
  * // Use this function to fetch from the API endpoint.
- * const data = await getWithToken(API_ENDPOINT_URL, method = "GET");
+ * const data = await getWithToken(API_ENDPOINT_URL, "GET");
  * ```
  */
 
 //DOUBLE CHECK JSDocs
 
 
-export async function doFetch(url, method = "GET") {
+export async function doFetch(url, method) {
     try {
         const token = localStorage.getItem("accessToken");
 
