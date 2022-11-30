@@ -9,6 +9,8 @@
  * ```
  */
 
+//DOUBLE CHECK JSDocs
+
  export async function loginSignup(url, userData) {
     try {
       const postData = {
@@ -24,9 +26,15 @@
       console.log(json);
   
       //FEEDBACK TO USER
-  
+      const errorFeedback = document.querySelector(".errorFeedback");
+
+      if (!json.errors) {
+      errorFeedback.style.padding = "0";
+      errorFeedback.style.border = "0"
+      errorFeedback.innerHTML = ``
+      }
+
       if (json.errors) {
-        const errorFeedback = document.querySelector(".errorFeedback");
         errorFeedback.style.padding = ".5rem";
         errorFeedback.style.border = "solid 1px #bea6ff"
         errorFeedback.innerHTML = `${json.errors[0].message}`
