@@ -12,23 +12,22 @@
 
 //DOUBLE CHECK JSDocs
 
-
 export async function doFetch(url, method) {
-    try {
-        const token = localStorage.getItem("accessToken");
+  try {
+    const token = localStorage.getItem("accessToken");
 
-        const options = {
-            method: method,
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          };
+    const options = {
+      method: method,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
 
-          const response = await fetch(url, options);
-          const json = await response.json();
-          return json;
-    } catch (error) {
-        console.log(error);
-    }
+    const response = await fetch(url, options);
+    const json = await response.json();
+    return json;
+  } catch (error) {
+    console.log(error);
+  }
 }

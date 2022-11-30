@@ -7,24 +7,24 @@ const rememberCheck = document.querySelector("#rememberCheck");
 const form = document.querySelector("form");
 
 if (localStorage.getItem("email")) {
-    emailInput.value = localStorage.getItem("email");
+  emailInput.value = localStorage.getItem("email");
 }
 
 function validateLogin(e) {
   e.preventDefault();
 
-  if(rememberCheck.checked && emailInput.value) {
+  if (rememberCheck.checked && emailInput.value) {
     localStorage.setItem("email", emailInput.value);
   } else if (!rememberCheck.checked && localStorage.getItem("email")) {
     localStorage.removeItem("email");
-  } 
+  }
 
-    const userInput = {
+  const userInput = {
     email: emailInput.value,
     password: passwordInput.value,
-    };
+  };
 
-    loginSignup(LOGIN_URL, userInput);
+  loginSignup(LOGIN_URL, userInput);
 }
 
 form.addEventListener("submit", validateLogin);
