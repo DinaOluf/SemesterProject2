@@ -2,6 +2,7 @@
  * Gets the API endpoint with accessToken
  * @param {string} url the url to the API endpoint
  * @param {string} method the method you want to use (GET/POST/PUT/DELETE)
+ * @param {object} info the info object you want to send
  * @returns {object} object from API
  * @example
  * ```js
@@ -12,7 +13,7 @@
 
 //DOUBLE CHECK JSDocs
 
-export async function doFetch(url, method) {
+export async function doFetch(url, method, info) {
   try {
     const token = localStorage.getItem("accessToken");
 
@@ -22,6 +23,7 @@ export async function doFetch(url, method) {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
+      body: JSON.stringify(info),
     };
 
     const response = await fetch(url, options);
