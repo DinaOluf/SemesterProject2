@@ -1,3 +1,5 @@
+import { formatDate, todaysDate } from "./timeDate.js";
+
 export function renderPosts(posts) {
   const postsContainer = document.querySelector(".posts-container");
   const localUser = localStorage.getItem("name");
@@ -22,11 +24,11 @@ export function renderPosts(posts) {
                     ? `<div class="post-options" data-author="${posts[i].seller.name}">
                       <div class="dropdown d-flex justify-content-end">
                           <div type="button" class="dropdown-toggle mt-1" class="rounded-circle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <img src="./assets/components/icons/options-icon.png" alt="edit wheel for posts"  width="40" height="40">
+                              <img src="./../../../assets/icons/options-icon.png" alt="edit wheel for posts"  width="28" height="28">
                           </div>
                           <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton">
-                              <li><button class="dropdown-item" id="editPost">Edit Post</button></li>
-                              <li><button class="dropdown-item" id="removePost"> Delete post</button></li>
+                              <li><button class="dropdown-item" id="editPost" value="${posts[i].id}">Edit Post</button></li>
+                              <li><button class="dropdown-item" id="removePost" value="${posts[i].id}"> Delete post</button></li>
                           </ul>
                       </div>
                   </div>`
@@ -34,7 +36,7 @@ export function renderPosts(posts) {
                 }
                 </div>
               </div>
-              <div class="ps-2 d-flex align-items-center">
+              <div class="name-and-title ps-2 d-flex">
                 <div class="d-flex align-items-center text-secondary">
                   <a
                     href="./profile.html?name=${posts[i].seller.name}"
@@ -45,16 +47,12 @@ export function renderPosts(posts) {
                       ? `<img src="${posts[i].seller.avatar}" class="profile-images rounded-circle" onerror="this.src='./../../../assets/icons/profile-icon.png'">`
                       : `<img src="./../../../assets/icons/profile-icon.png" class="profile-images rounded-circle">`
                   }
-                  <h2 id="userName" class="h3 m-0 ms-2 fs-4">
+                  <h2 id="userName" class="h3 m-0 ms-2 me-1 fs-4">
                     ${posts[i].seller.name}
                   </h2>
                   </a>
                 </div>
-                <a href="./listing.html?id=${
-                  posts[i].id
-                }" class="text-light text-decoration-none ms-2 fs-4">- ${
-      posts[i].title
-    }</a>
+                <a href="./listing.html?id=${posts[i].id}" class="text-light text-decoration-none ms-1 my-2 fs-4">| ${posts[i].title}</a>
               </div>
               ${
                 posts[i].media[0]
@@ -64,25 +62,30 @@ export function renderPosts(posts) {
                         <img
                             src="${posts[i].media[0]}"
                             class="position-absolute bottom-0 text-secondary"
+                            onerror="this.parentElement.remove()"
                         />
                     </div></a>`
                   : ``
               }
               ${
                 posts[i].description
-                  ? `<div class="listings-descriptions mx-2 mt-2">
+                  ? `<div class="listings-descriptions ms-3 mx-2 mt-2">
                         ${posts[i].description}
                     </div>`
                   : ``
               }
 
-              <div class="text-secondary mx-2 mt-2 d-flex">
+              <div class="text-secondary mx-2 mt-2 row justify-content-start">
               ${
                 posts[i]._count.bids === 0
-                  ? `<div class="bids-count text-danger">${posts[i]._count.bids} bid(s)</div>`
-                  : `<div class="bids-count text-secondary">${posts[i]._count.bids} bid(s)</div>`
+                  ? `<div class="bids-count text-danger p-0 col-3 col-md-2 col-xxl-1">${posts[i]._count.bids} bid(s)</div>`
+                  : `<div class="bids-count text-secondary p-0 col-3 col-md-2 col-xxl-1">${posts[i]._count.bids} bid(s)</div>`
               }
-                <div class="dates-end ms-1">- End: ${posts[i].endsAt}</div>
+              ${
+                formatDate(new Date(posts[i].endsAt)) < todaysDate(new Date())
+                  ? `<div class="dates-end p-0 col">- Ends: ${formatDate(new Date(posts[i].endsAt))}</div>`
+                  : `<div class="dates-end text-danger p-0 col">- Ends: ${formatDate(new Date(posts[i].endsAt))}</div>`
+              }
               </div>
             </div>
         `;
