@@ -25,8 +25,8 @@
         </a>
         <div class="col-8 col-sm-6 col-md-5 col-lg-4 col-xxl-3">
           <form
+            id="searchForm"
             class="d-flex bg-secondary rounded h-100 p-1 align-items-center"
-            onsubmit=""
           >
             <img
               src="./assets/icons/search-icon.png"
@@ -62,11 +62,6 @@
           <li><a class="dropdown-item" href="/profile.html">Profile</a></li>
           <li><a class="dropdown-item" href="">Log Out</a></li>
         </ul>
-        <!-- <a
-          class="btn btn-primary me-2 text-secondary border border-secondary"
-          href="./login.html"
-          >Log in</a
-        > -->
       </div>
     </header>
     <main class="container my-4">
@@ -79,7 +74,7 @@
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingAuction">
                 <button
-                  class="accordion-button text-uppercase fs-5"
+                  class="accordion-button collapsed text-uppercase fs-5"
                   type="button"
                   data-bs-toggle="collapse"
                   data-bs-target="#collapseOne"
@@ -91,21 +86,22 @@
               </h2>
               <div
                 id="collapseOne"
-                class="accordion-collapse collapse show"
+                class="accordion-collapse collapse"
                 aria-labelledby="headingOne"
                 data-bs-parent="#accordionAuction"
               >
                 <div class="accordion-body">
-                  <form class="row flex-column flex-nowrap mh-100">
+                  <div class="errorFeedback"></div>
+                  <form id="auctionForm" class="row flex-column flex-nowrap mh-100">
                     <div class="col-12 col-sm-10 col-md-8">
-                      <label for="titleInput">Title*</label>
+                      <label for="titleInput">Title *</label>
                       <input
                         id="titleInput"
                         class="bg-secondary p-1 rounded form-control text-dark"
                       />
                     </div>
                     <div class="col-10 col-sm-7 col-md-6 col-lg-4 mt-3">
-                      <label for="dateInput">Date and Time</label>
+                      <label for="dateInput">Ends at *</label>
                       <input
                         id="dateInput"
                         type="datetime-local"
@@ -124,7 +120,7 @@
                         >Image Direct Link
                         <span class="text-secondary"
                           >(generate on
-                          <a href="https://postimages.org/">PostImages.org</a
+                          <a href="https://postimages.org/"  target="_blank">PostImages.org</a
                           >)</span
                         ></label
                       >
@@ -147,6 +143,7 @@
                     </div>
                     <div>
                       <button
+                        id="listItemBtn"
                         class="btn btn-primary text-secondary border border-secondary align-self-center mt-3 px-5"
                       >
                         List item
@@ -164,30 +161,19 @@
             >
               <option value="default">Filter...</option>
               <option value="following" id="filterFollowing">Following</option>
-              <option value="newest" id="filterByLatestPosts">
-                Latest posts
-              </option>
-              <option value="oldest" id="filterByOldest">Oldest posts</option>
+              <option value="active" id="filterActive">Active Only</option>
+              <option value="newest" id="filterByLatestPosts">Latest posts</option>
             </select>
           </div>
           <div class="posts-container">
             <div class="card bg-dark py-2 placeholder-glow">
               <div class="d-flex justify-content-between">
                 <div id="tags" class="px-2">
-                  <!-- <div
-                    class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2"
-                  >
-                    TAGS
-                  </div> -->
                 </div>
                 <div class="owners-options mx-2"></div>
               </div>
               <div class="ps-2 d-flex align-items-center">
                 <div class="d-flex align-items-center text-secondary">
-                  <!-- <a
-                    href="#"
-                    class="text-decoration-none d-flex align-items-center"
-                  > -->
                   <img
                     id="userImage"
                     class="profile-images placeholder rounded-circle"
@@ -195,11 +181,7 @@
                   <h2 id="userName" class="h3 m-0 ms-2 fs-4 placeholder">
                     Name
                   </h2>
-                  <!-- </a> -->
                 </div>
-                <!-- <span class="mx-2 text-light">-</span> -->
-                <!-- make the span below anchor tag and remove ms-2, as well as un-commenting the span above -->
-                <!-- <span class="text-light text-decoration-none fs-4 ms-2">- Item</span> -->
               </div>
               <div
                 class="listings-images mt-2 w-100 overflow-hidden position-relative"
@@ -208,7 +190,6 @@
                   class="position-absolute bottom-0 placeholder text-secondary"
                 />
               </div>
-
               <div class="listings-descriptions mx-2 mt-2 placeholder">
                 Description
               </div>
