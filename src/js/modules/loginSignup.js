@@ -23,8 +23,6 @@ export async function loginSignup(url, userData) {
     const response = await fetch(url, postData);
     const json = await response.json();
 
-    console.log(json);
-
     //FEEDBACK TO USER
     const errorFeedback = document.querySelector(".errorFeedback");
 
