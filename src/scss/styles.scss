@@ -76,6 +76,16 @@ form {
   }
 }
 
+.name-and-title {
+  align-items: center;
+}
+
+.dropdown-toggle {
+  &::after{
+    border: none;
+  }
+}
+
 .currency-icon {
   height: 1.2rem;
   width: 1.2rem;
@@ -166,6 +176,11 @@ form {
     & .search-input {
       max-height: 2rem;
     }
+  }
+
+  .name-and-title {
+    flex-direction: column;
+    align-items: start;
   }
 
   #welcome {
