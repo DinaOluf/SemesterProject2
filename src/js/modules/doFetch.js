@@ -7,7 +7,7 @@
  * @example
  * ```js
  * // Use this function to fetch from the API endpoint.
- * const data = await getWithToken(API_ENDPOINT_URL, "GET");
+ * const data = await getWithToken(API_ENDPOINT_URL, "GET", info);
  * ```
  */
 

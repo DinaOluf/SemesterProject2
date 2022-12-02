@@ -1,6 +1,12 @@
 
-export function searchSubmit(searchTerm){
-    console.log(searchTerm); //We'll finish this later
+//Connect this directly to pages with search function
 
-    // window.location.href = `./index.html?search=${searchTerm}`;
+const searchForm = document.querySelector("#searchForm");
+const searchInput = document.querySelector("#searchInput");
+
+export function search(e){
+    e.prevent.default;
+    window.location(`./../../search.html?search="${searchInput.value}"`);
 }
+
+searchForm.addEventListener("submit", search);
