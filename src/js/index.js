@@ -8,12 +8,12 @@ if (!localStorage.getItem("accessToken")) {
   window.location.href = "./welcome.html";
 }
 
-//get listings
+//GET listings
 const listings = await doFetch(LISTINGS_URL, "GET");
 console.log(listings); //Remove later
 renderPosts(listings);
 
-//post auction listing
+//POST auction listing
 const titleInput = document.querySelector("#titleInput");
 const dateInput = document.querySelector("#dateInput");
 const descInput = document.querySelector("#descInput");
@@ -58,24 +58,73 @@ async function listItem(e) {
 auctionForm.addEventListener("submit", listItem);
 
 
-//edit and delete post
-const editPosts = document.querySelectorAll("#editPost");
+//EDIT auction listing
+let myID = ""; //Variable that will hold the ID of the post you want to edit/delete
 
-function editForm(e) {
-  const postID = e.target.value;
+async function editListing(e) {
+  e.preventDefault();
 
-  console.log(postID); //make URL with ID
-  
-  //Make form/modal appear with Bootstrap (plan 2: addElement)
+const titleInput = document.querySelector("#editTitleInput");
+const descInput = document.querySelector("#editDescInput");
+const imageInput = document.querySelector("#editImageInput");
+const tagsInput = document.querySelector("#editTagsInput");
 
-  //Use postID to get the listing information and paste the info it to the form
+  const tagsArray = splitStringToArray(tagsInput.value);
+  const ID_URL = LISTING_URL + myID;
 
-  //eventListener for submit --- Can I have an eventListener inside and eventListener?
+  const info = {
+    "title": titleInput.value, 
+    "media": [imageInput.value], 
+    "description": descInput.value, 
+    "tags": tagsArray, 
+  }
 
-  //doFetch(URL, "PUT", object)
+  const sentPost = await doFetch(ID_URL, "PUT", info);
+
+  //Feedback
+  const errorFeedback = document.querySelector(".editErrorFeedback");
+
+  if (!sentPost.errors) {
+    errorFeedback.style.padding = "0";
+    errorFeedback.style.border = "0";
+    errorFeedback.innerHTML = ``;
+  }
+
+  if(sentPost.errors) {
+    errorFeedback.style.padding = ".5rem";
+    errorFeedback.style.border = "solid 1px #bea6ff";
+    errorFeedback.innerHTML = `${sentPost.errors[0].message}`;
+  } else {
+    window.location.reload(); // Or send to post page instead !!
+  }
 }
 
-editPosts.forEach((post) => {
-  post.addEventListener("click", editForm);
+function listenForEditSubmit(e) {
+  myID = e.target.value;
+  const editForm = document.querySelector("#editForm");
+  editForm.addEventListener("submit", editListing);
+}
+
+const editPost = document.querySelectorAll("#editPost");
+
+editPost.forEach((post) => {
+  post.addEventListener("click", listenForEditSubmit);
 });
 
+
+//DELETE auction listing -- Add modal
+async function deleteListing(e) {
+  let deleteID = e.target.value;
+  const ID_URL = LISTING_URL + deleteID;
+
+  const sentPost = await doFetch(ID_URL, "DELETE");
+
+  if (!sentPost.errors) {
+    window.location.reload();
+  }
+}
+
+const removePost = document.querySelectorAll("#removePost");
+removePost.forEach((post) => {
+  post.addEventListener("click", deleteListing);
+});
