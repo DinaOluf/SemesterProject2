@@ -28,7 +28,7 @@ async function listItem(e) {
 
   const info = {
     "title": titleInput.value, // Required
-    "endsAt": dateInput.value, // Required - Instance of new Date()
+    "endsAt": new Date(dateInput.value), // Required - Instance of new Date()
     "media": [imageInput.value], // Optional
     "description": descInput.value, // Optional
     "tags": tagsArray, // optional
