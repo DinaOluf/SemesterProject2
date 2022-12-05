@@ -245,126 +245,251 @@ export function renderSearchPosts(posts) {
   const postsContainer = document.querySelector(".posts-container");
   postsContainer.innerHTML = "";
 
-  for (let i = 0; i < posts.length; i++) {
-    postsContainer.innerHTML += `
-        <div class="card bg-dark py-2 mb-4">
-              <div class="d-flex justify-content-between">
-                <div id="tags" class="px-2">
-                ${
-                  posts[i].tags[0]
-                    ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
-                        ${posts[i].tags[0]}
-                        </div>`
-                    : ``
-                }
-                ${
-                  posts[i].tags[1]
-                    ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
-                        ${posts[i].tags[1]}
-                        </div>`
-                    : ``
-                }
-                ${
-                  posts[i].tags[2]
-                    ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
-                        ${posts[i].tags[2]}
-                        </div>`
-                    : ``
-                }
-                ${
-                  posts[i].tags[3]
-                    ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
-                        ${posts[i].tags[3]}
-                        </div>`
-                    : ``
-                }
-                ${
-                  posts[i].tags[4]
-                    ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
-                        ${posts[i].tags[4]}
-                        </div>`
-                    : ``
-                }
-                ${
-                  posts[i].tags[5]
-                    ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
-                        ${posts[i].tags[5]}
-                        </div>`
-                    : ``
-                }
-                ${
-                  posts[i].tags[6]
-                    ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
-                        ${posts[i].tags[6]}
-                        </div>`
-                    : ``
-                }
-                ${
-                  posts[i].tags[7]
-                    ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
-                        ${posts[i].tags[7]}
-                        </div>`
-                    : ``
-                }
-                </div>
-                <div class="owners-options mx-2">
-                </div>
-              </div>
-              <div class="name-and-title ps-2 d-flex">
-                <div class="d-flex align-items-center text-secondary">
-                  <a
-                    href="./profile.html?name=${posts[i].seller.name}"
-                    class="text-decoration-none d-flex align-items-center"
-                  >
+  //If user is logged in they can view listing in detail and seller's profile
+  if (localStorage.getItem("accessToken")) {
+    for (let i = 0; i < posts.length; i++) {
+      postsContainer.innerHTML += `
+          <div class="card bg-dark py-2 mb-4">
+                <div class="d-flex justify-content-between">
+                  <div id="tags" class="px-2">
                   ${
-                    posts[i].seller.avatar !== ""
-                      ? `<img src="${posts[i].seller.avatar}" class="profile-images rounded-circle" onerror="this.src='./../../../assets/icons/profile-icon.png'">`
-                      : `<img src="./../../../assets/icons/profile-icon.png" class="profile-images rounded-circle">`
+                    posts[i].tags[0]
+                      ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
+                          ${posts[i].tags[0]}
+                          </div>`
+                      : ``
                   }
-                  <h2 id="userName" class="h3 m-0 ms-2 me-1 fs-4">
-                    ${posts[i].seller.name}
-                  </h2>
-                  </a>
+                  ${
+                    posts[i].tags[1]
+                      ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
+                          ${posts[i].tags[1]}
+                          </div>`
+                      : ``
+                  }
+                  ${
+                    posts[i].tags[2]
+                      ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
+                          ${posts[i].tags[2]}
+                          </div>`
+                      : ``
+                  }
+                  ${
+                    posts[i].tags[3]
+                      ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
+                          ${posts[i].tags[3]}
+                          </div>`
+                      : ``
+                  }
+                  ${
+                    posts[i].tags[4]
+                      ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
+                          ${posts[i].tags[4]}
+                          </div>`
+                      : ``
+                  }
+                  ${
+                    posts[i].tags[5]
+                      ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
+                          ${posts[i].tags[5]}
+                          </div>`
+                      : ``
+                  }
+                  ${
+                    posts[i].tags[6]
+                      ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
+                          ${posts[i].tags[6]}
+                          </div>`
+                      : ``
+                  }
+                  ${
+                    posts[i].tags[7]
+                      ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
+                          ${posts[i].tags[7]}
+                          </div>`
+                      : ``
+                  }
+                  </div>
+                  <div class="owners-options mx-2">
+                  </div>
                 </div>
-                <a href="./listing.html?id=${posts[i].id}" class="text-light text-decoration-none ms-1 my-2 fs-4">| ${posts[i].title}</a>
-              </div>
-              ${
-                posts[i].media[0]
-                  ? `<a href="./listing.html?id=${posts[i].id}"><div
-                        class="listings-images mt-2 w-100 overflow-hidden position-relative"
+                <div class="name-and-title ps-2 d-flex">
+                  <div class="d-flex align-items-center text-secondary">
+                    <a
+                      href="./profile.html?name=${posts[i].seller.name}"
+                      class="text-decoration-none d-flex align-items-center"
                     >
-                        <img
-                            src="${posts[i].media[0]}"
-                            class="position-absolute bottom-0 text-secondary"
-                            onerror="this.parentElement.remove()"
-                        />
-                    </div></a>`
-                  : ``
-              }
-              ${
-                posts[i].description
-                  ? `<div class="listings-descriptions ms-3 mx-2 mt-2">
-                        ${posts[i].description}
-                    </div>`
-                  : ``
-              }
-
-              <div class="text-secondary mx-2 mt-2 row justify-content-start">
-              ${
-                posts[i]._count.bids === 0
-                  ? `<div class="bids-count text-danger p-0 col-3 col-md-2 col-xxl-1">${posts[i]._count.bids} bid(s)</div>`
-                  : `<div class="bids-count text-secondary p-0 col-3 col-md-2 col-xxl-1">${posts[i]._count.bids} bid(s)</div>`
-              }
-              ${
-                new Date(posts[i].endsAt) > new Date()
-                  ? `<div class="dates-end p-0 col">- Ends: ${formatDate(new Date(posts[i].endsAt))}</div>`
-                  : `<div class="dates-end text-danger p-0 col">- Ends: ${formatDate(new Date(posts[i].endsAt))}</div>`
-              }
+                    ${
+                      posts[i].seller.avatar !== ""
+                        ? `<img src="${posts[i].seller.avatar}" class="profile-images rounded-circle" onerror="this.src='./../../../assets/icons/profile-icon.png'">`
+                        : `<img src="./../../../assets/icons/profile-icon.png" class="profile-images rounded-circle">`
+                    }
+                    <h2 id="userName" class="h3 m-0 ms-2 me-1 fs-4">
+                      ${posts[i].seller.name}
+                    </h2>
+                    </a>
+                  </div>
+                  <a href="./listing.html?id=${posts[i].id}" class="text-light text-decoration-none ms-1 my-2 fs-4">| ${posts[i].title}</a>
+                </div>
+                ${
+                  posts[i].media[0]
+                    ? `<a href="./listing.html?id=${posts[i].id}"><div
+                          class="listings-images mt-2 w-100 overflow-hidden position-relative"
+                      >
+                          <img
+                              src="${posts[i].media[0]}"
+                              class="position-absolute bottom-0 text-secondary"
+                              onerror="this.parentElement.remove()"
+                          />
+                      </div></a>`
+                    : ``
+                }
+                ${
+                  posts[i].description
+                    ? `<div class="listings-descriptions ms-3 mx-2 mt-2">
+                          ${posts[i].description}
+                      </div>`
+                    : ``
+                }
+  
+                <div class="text-secondary mx-2 mt-2 row justify-content-start">
+                ${
+                  posts[i]._count.bids === 0
+                    ? `<div class="bids-count text-danger p-0 col-3 col-md-2 col-xxl-1">${posts[i]._count.bids} bid(s)</div>`
+                    : `<div class="bids-count text-secondary p-0 col-3 col-md-2 col-xxl-1">${posts[i]._count.bids} bid(s)</div>`
+                }
+                ${
+                  new Date(posts[i].endsAt) > new Date()
+                    ? `<div class="dates-end p-0 col">- Ends: ${formatDate(new Date(posts[i].endsAt))}</div>`
+                    : `<div class="dates-end text-danger p-0 col">- Ends: ${formatDate(new Date(posts[i].endsAt))}</div>`
+                }
+                </div>
               </div>
-            </div>
-        `;
-    if (i === 50) {
-      break;
+          `;
+      if (i === 50) {
+        break;
+      }
+    }
+  } else {
+    for (let i = 0; i < posts.length; i++) {
+      postsContainer.innerHTML += `
+          <div class="card bg-dark py-2 mb-4">
+                <div class="d-flex justify-content-between">
+                  <div id="tags" class="px-2">
+                  ${
+                    posts[i].tags[0]
+                      ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
+                          ${posts[i].tags[0]}
+                          </div>`
+                      : ``
+                  }
+                  ${
+                    posts[i].tags[1]
+                      ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
+                          ${posts[i].tags[1]}
+                          </div>`
+                      : ``
+                  }
+                  ${
+                    posts[i].tags[2]
+                      ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
+                          ${posts[i].tags[2]}
+                          </div>`
+                      : ``
+                  }
+                  ${
+                    posts[i].tags[3]
+                      ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
+                          ${posts[i].tags[3]}
+                          </div>`
+                      : ``
+                  }
+                  ${
+                    posts[i].tags[4]
+                      ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
+                          ${posts[i].tags[4]}
+                          </div>`
+                      : ``
+                  }
+                  ${
+                    posts[i].tags[5]
+                      ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
+                          ${posts[i].tags[5]}
+                          </div>`
+                      : ``
+                  }
+                  ${
+                    posts[i].tags[6]
+                      ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
+                          ${posts[i].tags[6]}
+                          </div>`
+                      : ``
+                  }
+                  ${
+                    posts[i].tags[7]
+                      ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
+                          ${posts[i].tags[7]}
+                          </div>`
+                      : ``
+                  }
+                  </div>
+                  <div class="owners-options mx-2">
+                  </div>
+                </div>
+                <div class="name-and-title ps-2 d-flex">
+                  <div class="d-flex align-items-center text-secondary">
+                    <div
+                      class="text-decoration-none d-flex align-items-center"
+                    >
+                    ${
+                      posts[i].seller.avatar !== ""
+                        ? `<img src="${posts[i].seller.avatar}" class="profile-images rounded-circle" onerror="this.src='./../../../assets/icons/profile-icon.png'">`
+                        : `<img src="./../../../assets/icons/profile-icon.png" class="profile-images rounded-circle">`
+                    }
+                    <h2 id="userName" class="h3 m-0 ms-2 me-1 fs-4">
+                      ${posts[i].seller.name}
+                    </h2>
+                    </div>
+                  </div>
+                  <span class="text-light text-decoration-none ms-1 my-2 fs-4">| ${posts[i].title}</span>
+                </div>
+                ${
+                  posts[i].media[0]
+                    ? `<div
+                          class="listings-images mt-2 w-100 overflow-hidden position-relative"
+                      >
+                          <img
+                              src="${posts[i].media[0]}"
+                              class="position-absolute bottom-0 text-secondary"
+                              onerror="this.parentElement.remove()"
+                          />
+                      </div>`
+                    : ``
+                }
+                ${
+                  posts[i].description
+                    ? `<div class="listings-descriptions ms-3 mx-2 mt-2">
+                          ${posts[i].description}
+                      </div>`
+                    : ``
+                }
+  
+                <div class="text-secondary mx-2 mt-2 row justify-content-start">
+                ${
+                  posts[i]._count.bids === 0
+                    ? `<div class="bids-count text-danger p-0 col-3 col-md-2 col-xxl-1">${posts[i]._count.bids} bid(s)</div>`
+                    : `<div class="bids-count text-secondary p-0 col-3 col-md-2 col-xxl-1">${posts[i]._count.bids} bid(s)</div>`
+                }
+                ${
+                  new Date(posts[i].endsAt) > new Date()
+                    ? `<div class="dates-end p-0 col">- Ends: ${formatDate(new Date(posts[i].endsAt))}</div>`
+                    : `<div class="dates-end text-danger p-0 col">- Ends: ${formatDate(new Date(posts[i].endsAt))}</div>`
+                }
+                </div>
+              </div>
+          `;
+      if (i === 50) {
+        break;
+      }
     }
   }
 }
