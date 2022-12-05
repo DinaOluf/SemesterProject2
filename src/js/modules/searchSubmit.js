@@ -5,8 +5,8 @@ const searchForm = document.querySelector("#searchForm");
 const searchInput = document.querySelector("#searchInput");
 
 export function search(e){
-    e.prevent.default;
-    window.location(`./../../search.html?search="${searchInput.value}"`);
+    e.preventDefault();
+    location.href = `./search.html?search=${searchInput.value}`;
 }
 
 searchForm.addEventListener("submit", search);
