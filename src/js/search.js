@@ -84,8 +84,8 @@ if(searchedListings.length === 0) {
     postsContainer.classList.add("text-secondary", "text-center");
 }
 
-//If there's fewer than 2 search results, search through 100 more.
-// if(searchedListings.length < 2) {
+
+// if(searchedListings.length === 0) {
 // const LISTINGS_URL2 = LISTINGS_URL + "&offset=100"
 // const listings2 = await doFetch(LISTINGS_URL2, "GET");
 // filterSearch(listings2);

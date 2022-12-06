@@ -1,4 +1,4 @@
-import { LISTING_URL } from "./modules/api.js";
+import { LISTING_URL, PROFILE_URL } from "./modules/api.js";
 import { doFetch } from "./modules/doFetch.js";
 import { splitStringToArray } from "./modules/splitStringToArray.js";
 import { formatDate } from "./modules/timeDate.js";
@@ -6,6 +6,11 @@ import { formatDate } from "./modules/timeDate.js";
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
+
+//Get localUser
+const localUserName = localStorage.getItem("name");
+const USER_API = PROFILE_URL + localUserName;
+const localUser = await doFetch(USER_API, "GET");
 
 //Get listing
 const LISTING_ID_URL = LISTING_URL + id + "?_seller=true&_bids=true";
@@ -21,11 +26,13 @@ listingName.innerHTML = listing.title;
 const tagsContainer = document.querySelector("#tags");
 
 for(let i = 0; i < listing.tags.length; i++) {
+    if(listing.tags.length === 0) {
         tagsContainer.innerHTML += `<div
         class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mx-1 m-auto"
       >
         ${listing.tags[i]}
       </div>`
+    }
 }
 
 //Place profile link
@@ -150,7 +157,7 @@ if(listing.description){
 }
 
 
-//Bids
+//Bids counter
 const bidsCounter = document.querySelector(".bids-count");
 bidsCounter.classList.remove("placeholder");
 bidsCounter.innerHTML = `${listing._count.bids} bid(s)`
@@ -169,10 +176,92 @@ if(new Date(listing.endsAt) < new Date()) {
 }
 
 //Render bids -or- message that there is none
+const bidsContainer = document.querySelector("#bids");
+if(listing.bids.length > 0) {
+    for(let i = listing.bids.length - 1; i >= 0; i--) {
+        const BIDDER_URL = PROFILE_URL + listing.bids[i].bidderName;
+        const bidderProfile = await doFetch(BIDDER_URL, "GET");
 
+        if(listing.bids[i] === listing.bids[(listing.bids.length - 6)]){
+            break;
+          }
+
+        bidsContainer.innerHTML += `${
+            listing.bids[i] === listing.bids[(listing.bids.length - 1)]
+              ? `<div class="card bg-dark border border-secondary mb-3 py-2">`
+              : `<div class="card bg-dark mb-3 py-2">`
+          }
+        <div class="ps-2 d-flex align-items-center">
+          <a
+            href="./profile.html?name=${listing.bids[i].bidderName}"
+            class="text-decoration-none d-flex align-items-center"
+          >
+          ${
+            bidderProfile.avatar !== ""
+              ? `<img src="${bidderProfile.avatar}" class="profile-images rounded-circle" onerror="this.src='./../../../assets/icons/profile-icon.png'">`
+              : `<img src="./../../../assets/icons/profile-icon.png" class="profile-images rounded-circle">`
+          }
+            <div class="m-0 ms-2 fw-bold">
+            ${listing.bids[i].bidderName}
+            </div>
+          </a>
+          <div class="ms-3">Bid: <span class="bid">${listing.bids[i].amount}</span><img src="./assets/icons/currency-icon.png" class="currency-icon ms-1"></div>
+        </div>
+      </div>`
+    }
+} else {
+    bidsContainer.innerHTML = `<div class="d-flex justify-content-center p-2 bg-secondary rounded border border-primary">
+    <div class="text-primary">No bid has been made.</div>
+  </div>`
+}
 
 //Place bid form -or- message that time has ran out
+const makeBidContainer = document.querySelector(".make-bid");
+if(new Date(listing.endsAt) < new Date()) {
+    makeBidContainer.innerHTML = `<div class="d-flex justify-content-center p-2 bg-danger rounded border border-primary">
+    <div class="text-primary">Time has ran out for this listing.</div>
+  </div>`
+} else {
+    makeBidContainer.innerHTML = `<h2 class="fs-3 text-uppercase">Want to make a bid?</h2>
+    <div class="card bg-dark py-3 px-4">
+      <div id="bidFeedback" class="d-flex justify-content-center text-center rounded text-danger border-danger"></div>
+      <div class="fs-5">Amount</div>
+      <form id="bidForm" class="d-flex gap-2">
+        <input id="bidInput" title="must be more than highest bid" class="bg-secondary search-input text-dark form-control mh-100" />
+        <button id="bidBtn" type="submit" class="btn btn-primary border border-secondary text-secondary py-1 w-75">Send bid</button>
+      </form>
+      <div class="text-secondary fs-6">Your credits: <span id="creditAmount">${localUser.credits}</span><img src="./assets/icons/currency-icon.png" class="currency-icon ms-1"></div>
+    </div>`
+}
 
+const bidForm = document.querySelector("#bidForm");
+
+async function makeBid(e) {
+    e.preventDefault();
+
+    const bidInput = document.querySelector("#bidInput");
+    const bidFeedback = document.querySelector("#bidFeedback");
+    const BID_URL = LISTING_URL + id + "/bids"
+
+    const bid = {
+        "amount": Number(bidInput.value)
+    }
+
+    const postBid = await doFetch(BID_URL, "POST", bid);
+    console.log(postBid);
+    if (postBid.errors) {
+        bidFeedback.style.padding = ".5rem";
+        bidFeedback.style.border = "solid 1px #bea6ff";
+        bidFeedback.innerHTML = `${postBid.errors[0].message}`;
+    } else {
+        bidFeedback.innerHTML = "";
+        bidFeedback.style.padding = "0";
+        bidFeedback.style.border = "0";
+        window.location.reload();
+    }
+}
+
+bidForm.addEventListener("submit", makeBid)
 
 //EDIT auction listing
 let myID = ""; //Variable that will hold the ID of the post you want to edit

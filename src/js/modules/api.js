@@ -7,3 +7,4 @@ export const LISTINGS_URL = `${API_URL}/api/v1/auction/listings?sort=created&sor
 export const LISTING_URL = `${API_URL}/api/v1/auction/listings/`;
 //<ID>?_seller=true&_bids=true&_active=true
 //<ID>/bids  -- to bid on listing
+export const PROFILE_URL = `${API_URL}/api/v1/auction/profiles/`

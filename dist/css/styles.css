@@ -10912,7 +10912,7 @@ form .form-control:focus, form .search-input:focus {
   max-width: 8rem;
 }
 #listing .listing-image {
-  height: 40rem;
+  height: 35rem;
 }
 #listing .listing-image img {
   object-fit: cover;
@@ -11021,6 +11021,9 @@ form .form-control:focus, form .search-input:focus {
 #signup form #rememberCheck {
     width: 1rem;
     height: 1rem;
+  }
+  #listing .listing-image {
+    max-height: 20rem;
   }
   #listing .make-bid h2, #listing .make-bid .h2 {
     font-size: 1.45rem;

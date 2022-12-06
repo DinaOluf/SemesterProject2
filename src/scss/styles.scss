@@ -144,7 +144,7 @@ form {
   }
 
   .listing-image {
-    height: 40rem;
+    height: 35rem;
 
     & img {
       object-fit: cover;
@@ -290,8 +290,12 @@ form {
   }
 
   #listing {
-    .make-bid {
-      h2 {
+    & .listing-image {
+      max-height: 20rem;
+    }
+
+    & .make-bid {
+      & h2 {
         font-size: 1.45rem;
       }
     }
