@@ -26,7 +26,7 @@ listingName.innerHTML = listing.title;
 const tagsContainer = document.querySelector("#tags");
 
 for(let i = 0; i < listing.tags.length; i++) {
-    if(listing.tags.length === 0) {
+    if(listing.tags.length > 0) {
         tagsContainer.innerHTML += `<div
         class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mx-1 m-auto"
       >
@@ -41,11 +41,11 @@ document.querySelector("#userLink").href = `./profile.html?name=${listing.seller
 //Place user image if any
 const userImage = document.querySelector("#userImage");
 userImage.classList.remove("placeholder");
-if(listing.seller.avatar !== null) {
-    userImage.src = listing.seller.avatar;
-    userImage.onerror = "this.src='./../../../assets/icons/profile-icon.png'";
-} else {
+if(listing.seller.avatar === null || listing.seller.avatar === "") {
     userImage.src = "./assets/icons/profile-icon.png";
+} else {
+    userImage.src = listing.seller.avatar;
+    userImage.onerror = "this.src='./assets/icons/profile-icon.png'";
 }
 
 //Place username 
@@ -60,7 +60,7 @@ if(localStorage.getItem("name") === listing.seller.name){
     ownersOptions.innerHTML = `<div class="post-options" data-author="${listing.seller.name}">
     <div class="dropdown d-flex justify-content-end">
       <div type="button" class="dropdown-toggle" class="rounded-circle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <img src="./../../../assets/icons/options-icon.png" alt="edit wheel for posts"  width="28" height="28">
+          <img src="./assets/icons/options-icon.png" alt="edit wheel for posts"  width="28" height="28">
       </div>
       <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton">
           <li><button class="dropdown-item" id="editPost" data-bs-toggle="modal" data-bs-target="#editModal" value="${listing.id}">Edit Post</button></li>
@@ -198,8 +198,8 @@ if(listing.bids.length > 0) {
           >
           ${
             bidderProfile.avatar !== ""
-              ? `<img src="${bidderProfile.avatar}" class="profile-images rounded-circle" onerror="this.src='./../../../assets/icons/profile-icon.png'">`
-              : `<img src="./../../../assets/icons/profile-icon.png" class="profile-images rounded-circle">`
+              ? `<img src="${bidderProfile.avatar}" class="profile-images rounded-circle" onerror="this.src='./assets/icons/profile-icon.png'">`
+              : `<img src="./assets/icons/profile-icon.png" class="profile-images rounded-circle">`
           }
             <div class="m-0 ms-2 fw-bold">
             ${listing.bids[i].bidderName}
@@ -261,7 +261,9 @@ async function makeBid(e) {
     }
 }
 
-bidForm.addEventListener("submit", makeBid)
+if(bidForm){
+    bidForm.addEventListener("submit", makeBid)
+}
 
 //EDIT auction listing
 let myID = ""; //Variable that will hold the ID of the post you want to edit
