@@ -172,11 +172,11 @@ export function renderPosts(posts) {
               ${
                 posts[i].media[0]
                   ? `<a href="./listing.html?id=${posts[i].id}"><div
-                        class="listings-images mt-2 w-100 overflow-hidden position-relative"
+                        class="listings-images mt-2 w-100 overflow-hidden position-relative d-flex align-items-center"
                     >
                         <img
                             src="${posts[i].media[0]}"
-                            class="position-absolute bottom-0 text-secondary"
+                            class="position-absolute text-secondary"
                             onerror="this.parentElement.remove()"
                         />
                     </div></a>`
@@ -333,11 +333,11 @@ export function renderSearchPosts(posts) {
                 ${
                   posts[i].media[0]
                     ? `<a href="./listing.html?id=${posts[i].id}"><div
-                          class="listings-images mt-2 w-100 overflow-hidden position-relative"
+                          class="listings-images mt-2 w-100 overflow-hidden position-relative d-flex align-items-center"
                       >
                           <img
                               src="${posts[i].media[0]}"
-                              class="position-absolute bottom-0 text-secondary"
+                              class="position-absolute text-secondary"
                               onerror="this.parentElement.remove()"
                           />
                       </div></a>`
@@ -455,11 +455,11 @@ export function renderSearchPosts(posts) {
                 ${
                   posts[i].media[0]
                     ? `<div
-                          class="listings-images mt-2 w-100 overflow-hidden position-relative"
+                          class="listings-images mt-2 w-100 overflow-hidden position-relative d-flex align-items-center"
                       >
                           <img
                               src="${posts[i].media[0]}"
-                              class="position-absolute bottom-0 text-secondary"
+                              class="position-absolute text-secondary"
                               onerror="this.parentElement.remove()"
                           />
                       </div>`
@@ -504,6 +504,62 @@ export function renderPostsWoTags(user) {
         <div class="card bg-dark py-2 mb-4">
               <div class="d-flex justify-content-between">
                 <div id="tags" class="px-2">
+                ${
+                  user.listings[i].tags[0]
+                    ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
+                        ${user.listings[i].tags[0]}
+                        </div>`
+                    : ``
+                }
+                ${
+                  user.listings[i].tags[1]
+                    ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
+                        ${user.listings[i].tags[1]}
+                        </div>`
+                    : ``
+                }
+                ${
+                  user.listings[i].tags[2]
+                    ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
+                        ${user.listings[i].tags[2]}
+                        </div>`
+                    : ``
+                }
+                ${
+                  user.listings[i].tags[3]
+                    ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
+                        ${user.listings[i].tags[3]}
+                        </div>`
+                    : ``
+                }
+                ${
+                  user.listings[i].tags[4]
+                    ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
+                        ${user.listings[i].tags[4]}
+                        </div>`
+                    : ``
+                }
+                ${
+                  user.listings[i].tags[5]
+                    ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
+                        ${user.listings[i].tags[5]}
+                        </div>`
+                    : ``
+                }
+                ${
+                  user.listings[i].tags[6]
+                    ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
+                        ${user.listings[i].tags[6]}
+                        </div>`
+                    : ``
+                }
+                ${
+                  user.listings[i].tags[7]
+                    ? `<div class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mb-2">
+                        ${user.listings[i].tags[7]}
+                        </div>`
+                    : ``
+                }
                 </div>
                 <div class="owners-options mx-2">
                 ${
@@ -567,6 +623,12 @@ export function renderPostsWoTags(user) {
                                         >(separated by comma, eg. "Pearl, Ring")</span
                                       ></label
                                     >
+                                      <input
+                                      id="editTagsInput"
+                                      class="bg-secondary p-1 rounded form-control text-dark"
+                                      value="${String(user.listings[i].tags)}"
+                                      title="max 8 tags"
+                                    />
                                   </div>
                                   <div class="modal-footer mt-4 pb-0">
                                     <button type="button" class="btn btn-dark border border-danger text-danger" data-bs-dismiss="modal">Close</button>
@@ -604,11 +666,11 @@ export function renderPostsWoTags(user) {
               ${
                 user.listings[i].media[0]
                   ? `<a href="./listing.html?id=${user.listings[i].id}"><div
-                        class="listings-images mt-2 w-100 overflow-hidden position-relative"
+                        class="listings-images mt-2 w-100 overflow-hidden position-relative d-flex align-items-center"
                     >
                         <img
                             src="${user.listings[i].media[0]}"
-                            class="position-absolute bottom-0 text-secondary"
+                            class="position-absolute text-secondary"
                             onerror="this.parentElement.remove()"
                         />
                     </div></a>`

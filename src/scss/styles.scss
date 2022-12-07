@@ -67,7 +67,7 @@ form {
 }
 
 .listings-images {
-  height: 28rem;
+  min-height: 28rem;
 
   img {
     object-fit: cover;
@@ -143,8 +143,8 @@ form {
     max-width: 8rem;
   }
 
-  .listing-image {
-    height: 35rem;
+  & .listing-image {
+    height: 38rem;
 
     & img {
       object-fit: cover;

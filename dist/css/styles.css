@@ -10,7 +10,7 @@
 h1, .h1,
 h2,
 .h2 {
-  font-family: "Aqua";
+  font-family: "Aqua", Tahoma, "Segoe UI", Geneva, Verdana, sans-serif;
 }
 
 h3, .h3,
@@ -23,7 +23,7 @@ li,
 span,
 div,
 form {
-  font-family: "Merriweather";
+  font-family: "Merriweather", Georgia, "Times New Roman", Times, serif;
 }
 
 .form-check-input {
@@ -10855,7 +10855,7 @@ form .form-control:focus, form .search-input:focus {
 }
 
 .listings-images {
-  height: 28rem;
+  min-height: 28rem;
 }
 .listings-images img {
   object-fit: cover;
@@ -10912,7 +10912,7 @@ form .form-control:focus, form .search-input:focus {
   max-width: 8rem;
 }
 #listing .listing-image {
-  height: 35rem;
+  height: 38rem;
 }
 #listing .listing-image img {
   object-fit: cover;
