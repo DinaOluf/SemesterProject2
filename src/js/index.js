@@ -11,7 +11,43 @@ if (!localStorage.getItem("accessToken")) {
 //GET listings
 const listings = await doFetch(LISTINGS_URL, "GET");
 console.log(listings); //Remove later
-renderPosts(listings);
+
+
+//Filter by active only
+const filterSelect = document.querySelector("#filterSelect");
+function filterActive() {
+  if(filterSelect.value === "default") {
+    renderPosts(listings);
+  }
+  
+  if(filterSelect.value === "active") {
+    let activeListings = [];
+
+    listings.forEach(listing => {
+      if( new Date(listing.endsAt) > new Date()){
+        activeListings.push(listing);
+      }
+    });
+
+    renderPosts(activeListings);
+  } 
+
+  if(filterSelect.value === "title") {
+    console.log("title")
+  }
+
+  if(filterSelect.value === "username") {
+    console.log("username")
+  }
+
+  // renderPosts(listings.sort((a, b) => a.id - b.id));
+}
+
+filterActive();
+filterSelect.addEventListener("change", filterActive)
+
+
+
 
 //POST auction listing
 const titleInput = document.querySelector("#titleInput");

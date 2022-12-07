@@ -106,6 +106,7 @@
                         id="dateInput"
                         type="datetime-local"
                         class="bg-secondary p-1 rounded form-control text-dark"
+                        min=""
                       />
                     </div>
                     <div class="mt-3">
@@ -160,9 +161,10 @@
               id="filterSelect"
             >
               <option value="default">Filter...</option>
-              <option value="following" id="filterFollowing">Following</option>
+              <option value="title" id="filterTitle">By Title</option>
+              <option value="username" id="filterName">By Username</option>
               <option value="active" id="filterActive">Active Only</option>
-              <option value="newest" id="filterByLatestPosts">Latest posts</option>
+
             </select>
           </div>
           <div class="posts-container">
