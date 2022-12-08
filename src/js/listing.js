@@ -217,10 +217,12 @@ if(listing.bids.length > 0) {
 
 //Place bid form -or- message that time has ran out
 const makeBidContainer = document.querySelector(".make-bid");
-if(new Date(listing.endsAt) < new Date()) {
+ if(new Date(listing.endsAt) < new Date()) {
     makeBidContainer.innerHTML = `<div class="d-flex justify-content-center p-2 bg-danger rounded border border-primary">
     <div class="text-primary">Time has ran out for this listing.</div>
   </div>`
+} if(localUserName === listing.seller.name) {
+    makeBidContainer.innerHTML = "";
 } else {
     makeBidContainer.innerHTML = `<h2 class="fs-3 text-uppercase">Want to make a bid?</h2>
     <div class="card bg-dark py-3 px-4">

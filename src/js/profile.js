@@ -13,6 +13,17 @@ if(!profileName) {
     const MY_URL = PROFILE_URL + localUser + "?_listings=true";
     const profile = await doFetch(MY_URL, "GET");
     renderProfile(profile);
+
+    const editPost = document.querySelectorAll("#editPost");
+    editPost.forEach((post) => {
+    post.addEventListener("click", listenForEditSubmit);
+    });
+  
+    const removePost = document.querySelectorAll("#removePost");
+    removePost.forEach((post) => {
+    post.addEventListener("click", deleteListing);
+    });
+
 } else {
     const MY_URL = PROFILE_URL + profileName + "?_listings=true";
     const profile = await doFetch(MY_URL, "GET");
@@ -28,10 +39,10 @@ let myID = ""; //Variable that will hold the ID of the post you want to edit/del
 async function editListing(e) {
   e.preventDefault();
 
-const titleInput = document.querySelector("#editTitleInput");
-const descInput = document.querySelector("#editDescInput");
-const imageInput = document.querySelector("#editImageInput");
-const tagsInput = document.querySelector("#editTagsInput");
+const titleInput = document.querySelector(`#editTitleInput${myID}`);
+const descInput = document.querySelector(`#editDescInput${myID}`);
+const imageInput = document.querySelector(`#editImageInput${myID}`);
+const tagsInput = document.querySelector(`#editTagsInput${myID}`);
 
   const tagsArray = splitStringToArray(tagsInput.value);
   const ID_URL = LISTING_URL + myID;
@@ -46,7 +57,7 @@ const tagsInput = document.querySelector("#editTagsInput");
   const sentPost = await doFetch(ID_URL, "PUT", info);
 
   //Feedback
-  const errorFeedback = document.querySelector(".editErrorFeedback");
+  const errorFeedback = document.querySelector(`.editErrorFeedback${myID}`);
 
   if (!sentPost.errors) {
     errorFeedback.style.padding = "0";
@@ -65,15 +76,11 @@ const tagsInput = document.querySelector("#editTagsInput");
 
 function listenForEditSubmit(e) {
   myID = e.target.value;
-  const editForm = document.querySelector("#editForm");
+
+  const editForm = document.querySelector(`#editForm${myID}`);
   editForm.addEventListener("submit", editListing);
 }
 
-const editPost = document.querySelectorAll("#editPost");
-
-editPost.forEach((post) => {
-  post.addEventListener("click", listenForEditSubmit);
-});
 
 
 //DELETE auction listing -- Add modal
@@ -87,8 +94,3 @@ async function deleteListing(e) {
     window.location.reload();
   }
 }
-
-const removePost = document.querySelectorAll("#removePost");
-removePost.forEach((post) => {
-  post.addEventListener("click", deleteListing);
-});

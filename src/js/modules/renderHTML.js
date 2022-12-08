@@ -76,38 +76,38 @@ export function renderPosts(posts) {
                             <img src="./assets/icons/options-icon.png" alt="edit wheel for posts"  width="28" height="28">
                         </div>
                         <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton">
-                            <li><button class="dropdown-item" id="editPost" data-bs-toggle="modal" data-bs-target="#editModal" value="${posts[i].id}">Edit Post</button></li>
+                            <li><button class="dropdown-item" id="editPost" data-bs-toggle="modal" data-bs-target="#editModal${posts[i].id}" value="${posts[i].id}">Edit Post</button></li>
                             <li><button class="dropdown-item" id="removePost" value="${posts[i].id}"> Delete post</button></li>
                         </ul>
-                        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="editModal${posts[i].id}" tabindex="-1" aria-labelledby="editModalLabel${posts[i].id}" aria-hidden="true">
                           <div class="modal-dialog modal-lg">
                             <div class="modal-content bg-dark">
                               <div class="modal-header">
-                                <h1 class="modal-title fs-5 text-uppercase" id="editModalLabel">Edit Listing</h1>
+                                <h1 class="modal-title fs-5 text-uppercase" id="editModalLabel${posts[i].id}">Edit Listing</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
                               <div class="modal-body">
-                                <div class="editErrorFeedback"></div>
-                                <form id="editForm" class="row flex-column flex-nowrap mh-100">
+                                <div class="editErrorFeedback${posts[i].id}"></div>
+                                <form id="editForm${posts[i].id}" class="row flex-column flex-nowrap mh-100">
                                   <div class="col-12 col-sm-10 col-md-8">
-                                    <label for="editTitleInput">Title</label>
+                                    <label for="editTitleInput${posts[i].id}">Title</label>
                                     <input
-                                      id="editTitleInput"
+                                      id="editTitleInput${posts[i].id}"
                                       class="bg-secondary p-1 rounded form-control text-dark"
                                       value="${posts[i].title}"
                                       title="max 280 characters"
                                     />
                                   </div>
                                   <div class="mt-3">
-                                    <label for="editDescInput">Description</label>
+                                    <label for="editDescInput${posts[i].id}">Description</label>
                                     <textarea
-                                      id="editDescInput"
+                                      id="editDescInput${posts[i].id}"
                                       class="bg-secondary p-1 rounded form-control text-dark"
                                       title="max 280 characters"
                                     >${posts[i].description}</textarea>
                                   </div>
                                   <div class="mt-3">
-                                    <label for="editImageInput"
+                                    <label for="editImageInput${posts[i].id}"
                                       >Image Direct Link
                                       <span class="text-secondary"
                                         >(generate on
@@ -116,21 +116,21 @@ export function renderPosts(posts) {
                                       ></label
                                     >
                                     <input
-                                      id="editImageInput"
+                                      id="editImageInput${posts[i].id}"
                                       class="bg-secondary p-1 rounded form-control text-dark"
                                       value="${posts[i].media[0]}"
                                       title="must be direct image link"
                                     />
                                   </div>
                                   <div class="col-12 col-sm-10 col-md-8 mt-3">
-                                    <label for="editTagsInput"
+                                    <label for="editTagsInput${posts[i].id}"
                                       >Tags
                                       <span class="text-secondary"
                                         >(separated by comma, eg. "Pearl, Ring")</span
                                       ></label
                                     >
                                     <input
-                                      id="editTagsInput"
+                                      id="editTagsInput${posts[i].id}"
                                       class="bg-secondary p-1 rounded form-control text-dark"
                                       value="${String(posts[i].tags)}"
                                       title="max 8 tags"
@@ -138,7 +138,7 @@ export function renderPosts(posts) {
                                   </div>
                                   <div class="modal-footer mt-4 pb-0">
                                     <button type="button" class="btn btn-dark border border-danger text-danger" data-bs-dismiss="modal">Close</button>
-                                    <button id="editFormButton" type="submit" for="editForm" class="btn btn-primary border border-secondary text-secondary" value="${posts[i].id}">Save changes</button>
+                                    <button id="editFormButton" type="submit" for="editForm${posts[i].id}" class="btn btn-primary border border-secondary text-secondary" value="${posts[i].id}">Save changes</button>
                                   </div>
                                 </form>
                               </div>
@@ -167,7 +167,7 @@ export function renderPosts(posts) {
                   </h2>
                   </a>
                 </div>
-                <a href="./listing.html?id=${posts[i].id}" class="text-light text-decoration-none ms-1 my-2 fs-4">| ${posts[i].title}</a>
+                <a href="./listing.html?id=${posts[i].id}" class="text-light text-decoration-none ms-1 my-2 fs-4 ps-2 border-start">${posts[i].title}</a>
               </div>
               ${
                 posts[i].media[0]
@@ -328,7 +328,7 @@ export function renderSearchPosts(posts) {
                     </h2>
                     </a>
                   </div>
-                  <a href="./listing.html?id=${posts[i].id}" class="text-light text-decoration-none ms-1 my-2 fs-4">| ${posts[i].title}</a>
+                  <a href="./listing.html?id=${posts[i].id}" class="text-light text-decoration-none ms-1 my-2 ps-2 border-start fs-4">${posts[i].title}</a>
                 </div>
                 ${
                   posts[i].media[0]
@@ -450,7 +450,7 @@ export function renderSearchPosts(posts) {
                     </h2>
                     </div>
                   </div>
-                  <span class="text-light text-decoration-none ms-1 my-2 fs-4">| ${posts[i].title}</span>
+                  <span class="text-light text-decoration-none ms-1 my-2 ps-2 border-start fs-4">${posts[i].title}</span>
                 </div>
                 ${
                   posts[i].media[0]
@@ -494,7 +494,7 @@ export function renderSearchPosts(posts) {
   }
 }
 
-export function renderPostsWoTags(user) {
+export function renderPostsWoBids(user) {
   const postsContainer = document.querySelector(".posts-container");
   const localUser = localStorage.getItem("name");
   postsContainer.innerHTML = "";
@@ -570,38 +570,38 @@ export function renderPostsWoTags(user) {
                             <img src="./assets/icons/options-icon.png" alt="edit wheel for posts"  width="28" height="28">
                         </div>
                         <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton">
-                            <li><button class="dropdown-item" id="editPost" data-bs-toggle="modal" data-bs-target="#editModal" value="${user.listings[i].id}">Edit Post</button></li>
+                            <li><button class="dropdown-item" id="editPost" data-bs-toggle="modal" data-bs-target="#editModal${user.listings[i].id}" value="${user.listings[i].id}">Edit Post</button></li>
                             <li><button class="dropdown-item" id="removePost" value="${user.listings[i].id}"> Delete post</button></li>
                         </ul>
-                        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="editModal${user.listings[i].id}" tabindex="-1" aria-labelledby="editModalLabel${user.listings[i].id}" aria-hidden="true">
                           <div class="modal-dialog modal-lg">
                             <div class="modal-content bg-dark">
                               <div class="modal-header">
-                                <h1 class="modal-title fs-5 text-uppercase" id="editModalLabel">Edit Listing</h1>
+                                <h1 class="modal-title fs-5 text-uppercase" id="editModalLabel${user.listings[i].id}">Edit Listing</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
                               <div class="modal-body">
-                                <div class="editErrorFeedback"></div>
-                                <form id="editForm" class="row flex-column flex-nowrap mh-100">
+                                <div class="editErrorFeedback${user.listings[i].id}"></div>
+                                <form id="editForm${user.listings[i].id}" class="row flex-column flex-nowrap mh-100">
                                   <div class="col-12 col-sm-10 col-md-8">
-                                    <label for="editTitleInput">Title</label>
+                                    <label for="editTitleInput${user.listings[i].id}">Title</label>
                                     <input
-                                      id="editTitleInput"
+                                      id="editTitleInput${user.listings[i].id}"
                                       class="bg-secondary p-1 rounded form-control text-dark"
                                       value="${user.listings[i].title}"
                                       title="max 280 characters"
                                     />
                                   </div>
                                   <div class="mt-3">
-                                    <label for="editDescInput">Description</label>
+                                    <label for="editDescInput${user.listings[i].id}">Description</label>
                                     <textarea
-                                      id="editDescInput"
+                                      id="editDescInput${user.listings[i].id}"
                                       class="bg-secondary p-1 rounded form-control text-dark"
                                       title="max 280 characters"
                                     >${user.listings[i].description}</textarea>
                                   </div>
                                   <div class="mt-3">
-                                    <label for="editImageInput"
+                                    <label for="editImageInput${user.listings[i].id}"
                                       >Image Direct Link
                                       <span class="text-secondary"
                                         >(generate on
@@ -610,21 +610,21 @@ export function renderPostsWoTags(user) {
                                       ></label
                                     >
                                     <input
-                                      id="editImageInput"
+                                      id="editImageInput${user.listings[i].id}"
                                       class="bg-secondary p-1 rounded form-control text-dark"
                                       value="${user.listings[i].media[0]}"
                                       title="must be direct image link"
                                     />
                                   </div>
                                   <div class="col-12 col-sm-10 col-md-8 mt-3">
-                                    <label for="editTagsInput"
+                                    <label for="editTagsInput${user.listings[i].id}"
                                       >Tags
                                       <span class="text-secondary"
                                         >(separated by comma, eg. "Pearl, Ring")</span
                                       ></label
                                     >
                                       <input
-                                      id="editTagsInput"
+                                      id="editTagsInput${user.listings[i].id}"
                                       class="bg-secondary p-1 rounded form-control text-dark"
                                       value="${String(user.listings[i].tags)}"
                                       title="max 8 tags"
@@ -647,7 +647,7 @@ export function renderPostsWoTags(user) {
               </div>
               <div class="name-and-title ps-2 d-flex">
                 <div class="d-flex align-items-center text-secondary">
-                  <a
+                  <div
                     href="./profile.html?name=${user.name}"
                     class="text-decoration-none d-flex align-items-center"
                   >
@@ -659,9 +659,9 @@ export function renderPostsWoTags(user) {
                   <h2 id="userName" class="h3 m-0 ms-2 me-1 fs-4">
                     ${user.name}
                   </h2>
-                  </a>
+                  </div>
                 </div>
-                <a href="./listing.html?id=${user.listings[i].id}" class="text-light text-decoration-none ms-1 my-2 fs-4">| ${user.listings[i].title}</a>
+                <a href="./listing.html?id=${user.listings[i].id}" class="text-light text-decoration-none ms-1 ps-2 border-start my-2 fs-4">${user.listings[i].title}</a>
               </div>
               ${
                 user.listings[i].media[0]

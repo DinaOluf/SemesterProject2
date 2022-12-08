@@ -1,4 +1,4 @@
-import { LISTINGS_URL } from "./modules/api.js";
+import { ACTIVE_URL } from "./modules/api.js";
 import { doFetch } from "./modules/doFetch.js";
 import { renderSearchPosts } from "./modules/renderHTML.js";
 
@@ -44,7 +44,7 @@ searchHeading.classList.remove("placeholder");
 searchHeading.innerHTML = `Search "${search}"`
 
 //GET listings
-const listings = await doFetch(LISTINGS_URL, "GET");
+const listings = await doFetch(ACTIVE_URL, "GET");
 console.log(listings); //Remove later
 
 const searchedListings = [];
@@ -83,12 +83,4 @@ if(searchedListings.length === 0) {
     postsContainer.innerHTML = `(0 results)`;
     postsContainer.classList.add("text-secondary", "text-center");
 }
-
-
-// if(searchedListings.length === 0) {
-// const LISTINGS_URL2 = LISTINGS_URL + "&offset=100"
-// const listings2 = await doFetch(LISTINGS_URL2, "GET");
-// filterSearch(listings2);
-// }
-
 

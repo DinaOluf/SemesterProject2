@@ -1,4 +1,4 @@
-import { renderPostsWoTags } from "./renderHTML.js";
+import { renderPostsWoBids } from "./renderHTML.js";
 
 export function renderProfile(profile){
     console.log(profile)
@@ -32,5 +32,5 @@ export function renderProfile(profile){
     listings.innerHTML = profile.listings.length;
 
     //Render listings
-    renderPostsWoTags(profile);
+    renderPostsWoBids(profile);
 }
