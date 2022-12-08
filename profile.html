@@ -77,10 +77,46 @@
                 class="p-3 m-0 bg-dark rounded-start d-flex align-items-center"
               >
                 <div>
-                  <img
+                  <button class="dropdown-item disabled" id="editImageBtn" data-bs-toggle="modal" data-bs-target="#editImageModal">
+                    <img
                     id="profileImage"
                     class="placeholder rounded-circle bg-secondary"
                   />
+                  </button>
+                </div>
+                <div class="modal fade" id="editImageModal" tabindex="-1" aria-labelledby="editImageLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content bg-dark">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5 text-uppercase" id="editImageLabel">Edit Profile Image</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="editImageError"></div>
+                        <form id="editImageForm" class="row flex-column flex-nowrap mh-100">
+                          <div class="mt-2">
+                            <label for="editImageInput"
+                              >Profile Image Direct Link
+                              <span class="text-secondary"
+                                >(generate on
+                                <a href="https://postimages.org/"  target="_blank">PostImages.org</a
+                                >)</span
+                              ></label
+                            >
+                            <input
+                            id="editImageInput"
+                            class="bg-secondary p-1 mt-2 rounded form-control text-dark"
+                            title="must be direct image link"
+                          />
+                          </div>
+                          <div class="modal-footer mt-4 pb-0">
+                            <button type="button" class="btn btn-dark border border-1 border-danger text-danger" data-bs-dismiss="modal">Close</button>
+                            <button id="editFormButton" type="submit" for="editImageForm" class="btn btn-primary border border-1 border-secondary text-secondary" value="${posts[i].id}">Save changes</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="ms-2 d-flex flex-column">
                   <h1
