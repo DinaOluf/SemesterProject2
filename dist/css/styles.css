@@ -10822,6 +10822,7 @@ header .dropdown-toggle {
 }
 header .dropdown-toggle #header-profile-icon {
   height: 4rem;
+  width: 4rem;
 }
 header .dropdown-toggle::after {
   border: none;
@@ -10924,6 +10925,9 @@ form .form-control:focus, form .search-input:focus {
   height: 5rem;
   width: 5rem;
 }
+#profile #imageOption {
+  left: 0;
+}
 
 @media (max-width: 766px) {
   #brand-name {
@@ -11005,6 +11009,7 @@ form .form-control:focus, form .search-input:focus {
   }
   header .dropdown-toggle #header-profile-icon {
     height: 3rem;
+    width: 3rem;
   }
   .listings-images {
     height: 16rem;

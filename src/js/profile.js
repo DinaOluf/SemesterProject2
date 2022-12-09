@@ -9,7 +9,12 @@ const profileName = params.get("name");
 
 const localUser = localStorage.getItem("name");
 
-if(!profileName) {
+const USER_URL = PROFILE_URL + localUser;
+const user = await doFetch(USER_URL, "GET");
+const headerProfileIcon = document.querySelector("#header-profile-icon");
+headerProfileIcon.src = user.avatar;
+
+if(!profileName || profileName === localUser) {
     const MY_URL = PROFILE_URL + localUser + "?_listings=true";
     const profile = await doFetch(MY_URL, "GET");
     renderProfile(profile);
@@ -31,7 +36,46 @@ if(!profileName) {
 }
 
 //EDIT profile Image
+  if (!profileName || profileName === localUser) {
+    const editImageBtn = document.querySelector("#editImageBtn");
 
+    editImageBtn.classList.remove("disabled");
+    editImageBtn.innerHTML += `<img src="./assets/icons/options-icon.png" id="imageOption" height="25" width="25" class="position-absolute bottom-0">`;
+  }
+
+  async function editProfileImage(e) {
+    e.preventDefault();
+
+    const editImageInput = document.querySelector("#editImageInput");
+    const IMAGE_URL = PROFILE_URL + localUser + "/media";
+
+    const info = {
+      "avatar": `${editImageInput.value}`
+    }
+
+    const response = await doFetch(IMAGE_URL, "PUT", info);
+
+    //Feedback
+    const imageErrorFeedback= document.querySelector(`#editImageError`);
+
+    if (!response.errors) {
+      imageErrorFeedback.style.padding = "0";
+      imageErrorFeedback.style.border = "0";
+      imageErrorFeedback.innerHTML = ``;
+    }
+
+    if(response.errors) {
+      imageErrorFeedback.style.padding = ".5rem";
+      imageErrorFeedback.style.border = "solid 1px #bea6ff";
+      imageErrorFeedback.innerHTML = `${response.errors[0].message}`;
+    } else {
+      window.location.reload(); 
+    }
+  }
+
+  const editImageForm = document.querySelector("#editImageForm");
+  editImageForm.addEventListener("submit", editProfileImage);
+  
 
 //EDIT auction listing
 let myID = ""; //Variable that will hold the ID of the post you want to edit/delete

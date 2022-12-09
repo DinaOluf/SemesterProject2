@@ -27,6 +27,7 @@ header {
     width: 4rem;
     & #header-profile-icon {
       height: 4rem;
+      width: 4rem;
     }
     &::after {
       border: none;
@@ -160,6 +161,10 @@ form {
     height: 5rem;
     width: 5rem;
   }
+
+  & #imageOption {
+    left: 0;
+  }
 }
 
 @media (max-width: 766px) {
@@ -265,6 +270,7 @@ form {
 
       & #header-profile-icon {
         height: 3rem;
+        width: 3rem;
       }
     }
   }

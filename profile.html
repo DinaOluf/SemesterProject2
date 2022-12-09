@@ -53,6 +53,7 @@
             src="./assets/icons/profile-icon.png"
             alt="Empty profile picture, as well as dropdown menu"
             id="header-profile-icon"
+            class="rounded-circle"
           />
         </a>
         <ul
@@ -77,7 +78,7 @@
                 class="p-3 m-0 bg-dark rounded-start d-flex align-items-center"
               >
                 <div>
-                  <button class="dropdown-item disabled" id="editImageBtn" data-bs-toggle="modal" data-bs-target="#editImageModal">
+                  <button class="dropdown-item disabled position-relative" id="editImageBtn" data-bs-toggle="modal" data-bs-target="#editImageModal">
                     <img
                     id="profileImage"
                     class="placeholder rounded-circle bg-secondary"
@@ -92,7 +93,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
-                        <div class="editImageError"></div>
+                        <div id="editImageError" class="rounded text-danger"></div>
                         <form id="editImageForm" class="row flex-column flex-nowrap mh-100">
                           <div class="mt-2">
                             <label for="editImageInput"
@@ -107,11 +108,12 @@
                             id="editImageInput"
                             class="bg-secondary p-1 mt-2 rounded form-control text-dark"
                             title="must be direct image link"
+                            required
                           />
                           </div>
                           <div class="modal-footer mt-4 pb-0">
                             <button type="button" class="btn btn-dark border border-1 border-danger text-danger" data-bs-dismiss="modal">Close</button>
-                            <button id="editFormButton" type="submit" for="editImageForm" class="btn btn-primary border border-1 border-secondary text-secondary" value="${posts[i].id}">Save changes</button>
+                            <button id="editImageFormButton" type="submit" for="editImageForm" class="btn btn-primary border border-1 border-secondary text-secondary">Save changes</button>
                           </div>
                         </form>
                       </div>

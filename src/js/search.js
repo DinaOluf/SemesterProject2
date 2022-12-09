@@ -1,4 +1,4 @@
-import { ACTIVE_URL } from "./modules/api.js";
+import { ACTIVE_URL, PROFILE_URL } from "./modules/api.js";
 import { doFetch } from "./modules/doFetch.js";
 import { renderSearchPosts } from "./modules/renderHTML.js";
 
@@ -8,6 +8,10 @@ const search = params.get("search").toLowerCase();
 
 //See if logged in - display appropriate content in heading
 const headerSideWrap = document.querySelector("#headerSideWrap");
+
+const ME_URL = PROFILE_URL + localStorage.getItem("name");
+const localProfile = await doFetch(ME_URL, "GET");
+
 if(localStorage.getItem("accessToken")){
     headerSideWrap.innerHTML = `<a
     class="nav-link dropdown-toggle me-3"
@@ -18,9 +22,10 @@ if(localStorage.getItem("accessToken")){
     aria-expanded="false"
   >
     <img
-      src="./assets/icons/profile-icon.png"
+      src="${localProfile.avatar}"
       alt="Empty profile picture, as well as dropdown menu"
       id="header-profile-icon"
+      class="rounded-circle"
     />
   </a>
   <ul
