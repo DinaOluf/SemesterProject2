@@ -8,11 +8,10 @@ const search = params.get("search").toLowerCase();
 
 //See if logged in - display appropriate content in heading
 const headerSideWrap = document.querySelector("#headerSideWrap");
-
-const ME_URL = PROFILE_URL + localStorage.getItem("name");
-const localProfile = await doFetch(ME_URL, "GET");
-
 if(localStorage.getItem("accessToken")){
+  const ME_URL = PROFILE_URL + localStorage.getItem("name");
+  const localProfile = await doFetch(ME_URL, "GET"); 
+
     headerSideWrap.innerHTML = `<a
     class="nav-link dropdown-toggle me-3"
     href="#"

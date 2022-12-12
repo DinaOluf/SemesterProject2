@@ -10827,6 +10827,9 @@ header .dropdown-toggle #header-profile-icon {
 header .dropdown-toggle::after {
   border: none;
 }
+header #logOut {
+  cursor: pointer;
+}
 
 form #header-search-icon {
   max-height: 2rem;

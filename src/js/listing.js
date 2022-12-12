@@ -12,6 +12,18 @@ const localUserName = localStorage.getItem("name");
 const USER_API = PROFILE_URL + localUserName;
 const localUser = await doFetch(USER_API, "GET");
 
+//Check if accessToken
+if (!localStorage.getItem("accessToken")) {
+  window.location.href = "./welcome.html";
+}
+
+//Display profile image in heading
+const profileImage = document.querySelector("#header-profile-icon");
+const ME_URL = PROFILE_URL + localUserName;
+const localProfile = await doFetch(ME_URL, "GET"); 
+
+profileImage.src = localProfile.avatar;
+
 //Get listing
 const LISTING_ID_URL = LISTING_URL + id + "?_seller=true&_bids=true";
 const listing = await doFetch(LISTING_ID_URL, "GET");

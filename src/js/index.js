@@ -1,4 +1,4 @@
-import { ACTIVE_URL, LISTINGS_URL, LISTING_URL } from "./modules/api.js";
+import { ACTIVE_URL, LISTINGS_URL, LISTING_URL, PROFILE_URL } from "./modules/api.js";
 import { doFetch } from "./modules/doFetch.js";
 import { renderPosts } from "./modules/renderHTML.js";
 import { splitStringToArray } from "./modules/splitStringToArray.js";
@@ -7,6 +7,13 @@ import { splitStringToArray } from "./modules/splitStringToArray.js";
 if (!localStorage.getItem("accessToken")) {
   window.location.href = "./welcome.html";
 }
+
+//Display profile image in heading
+const profileImage = document.querySelector("#header-profile-icon");
+const ME_URL = PROFILE_URL + localStorage.getItem("name");
+const localProfile = await doFetch(ME_URL, "GET"); 
+
+profileImage.src = localProfile.avatar;
 
 //GET listings
 const listings = await doFetch(LISTINGS_URL, "GET");

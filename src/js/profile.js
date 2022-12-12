@@ -7,6 +7,11 @@ const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const profileName = params.get("name");
 
+//Check if accessToken
+if (!localStorage.getItem("accessToken")) {
+  window.location.href = "./welcome.html";
+}
+
 const localUser = localStorage.getItem("name");
 
 const USER_URL = PROFILE_URL + localUser;
