@@ -1,5 +1,3 @@
-//Connect this directly to pages with search function
-
 const searchForm = document.querySelector("#searchForm");
 const searchInput = document.querySelector("#searchInput");
 

@@ -59,7 +59,7 @@ if (!profileName || profileName === localUser) {
   const editImageBtn = document.querySelector("#editImageBtn");
 
   editImageBtn.classList.remove("disabled");
-  editImageBtn.innerHTML += `<img src="./assets/icons/options-icon.png" id="imageOption" height="25" width="25" class="position-absolute bottom-0">`;
+  editImageBtn.innerHTML += `<img src="./assets/icons/options-icon.png" id="imageOption" height="26" width="26" class="position-absolute bottom-0">`;
 }
 
 async function editProfileImage(e) {

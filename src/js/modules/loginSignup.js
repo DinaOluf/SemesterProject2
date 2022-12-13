@@ -5,11 +5,9 @@
  * @example
  * ```js
  * // Use this function to sign up a user
- * postWithToken(REG_URL, userData);
+ * loginSignup(url, userData);
  * ```
  */
-
-//DOUBLE CHECK JSDocs
 
 export async function loginSignup(url, userData) {
   try {
