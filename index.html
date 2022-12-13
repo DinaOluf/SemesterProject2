@@ -93,7 +93,10 @@
               >
                 <div class="accordion-body">
                   <div class="errorFeedback text-danger rounded"></div>
-                  <form id="auctionForm" class="row flex-column flex-nowrap mh-100">
+                  <form
+                    id="auctionForm"
+                    class="row flex-column flex-nowrap mh-100"
+                  >
                     <div class="col-12 col-sm-10 col-md-8">
                       <label for="titleInput">Title *</label>
                       <input
@@ -122,7 +125,8 @@
                         >Image Direct Link
                         <span class="text-secondary"
                           >(generate on
-                          <a href="https://postimages.org/"  target="_blank">PostImages.org</a
+                          <a href="https://postimages.org/" target="_blank"
+                            >PostImages.org</a
                           >)</span
                         ></label
                       >
@@ -165,14 +169,12 @@
               <option value="title" id="filterTitle">By Title</option>
               <option value="username" id="filterName">By Username</option>
               <option value="active" id="filterActive">Active Only</option>
-
             </select>
           </div>
           <div class="posts-container">
             <div class="card bg-dark py-2 placeholder-glow">
               <div class="d-flex justify-content-between">
-                <div id="tags" class="px-2">
-                </div>
+                <div id="tags" class="px-2"></div>
                 <div class="owners-options mx-2"></div>
               </div>
               <div class="ps-2 d-flex align-items-center">

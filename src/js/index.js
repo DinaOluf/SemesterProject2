@@ -1,4 +1,9 @@
-import { ACTIVE_URL, LISTINGS_URL, LISTING_URL, PROFILE_URL } from "./modules/api.js";
+import {
+  ACTIVE_URL,
+  LISTINGS_URL,
+  LISTING_URL,
+  PROFILE_URL,
+} from "./modules/api.js";
 import { doFetch } from "./modules/doFetch.js";
 import { renderPosts } from "./modules/renderHTML.js";
 import { splitStringToArray } from "./modules/splitStringToArray.js";
@@ -11,9 +16,9 @@ if (!localStorage.getItem("accessToken")) {
 //Display profile image in heading
 const profileImage = document.querySelector("#header-profile-icon");
 const ME_URL = PROFILE_URL + localStorage.getItem("name");
-const localProfile = await doFetch(ME_URL, "GET"); 
+const localProfile = await doFetch(ME_URL, "GET");
 
-if(localProfile.avatar){
+if (localProfile.avatar) {
   profileImage.src = localProfile.avatar;
 }
 
@@ -29,27 +34,25 @@ function logOut() {
 
 logOutBtn.addEventListener("click", logOut);
 
-
 //GET listings
 const listings = await doFetch(LISTINGS_URL, "GET");
 console.log(listings); //Remove later
 
-
 //Filter by active only
 const filterSelect = document.querySelector("#filterSelect");
 async function filterActive() {
-  if(filterSelect.value === "default") {
+  if (filterSelect.value === "default") {
     const listings = await doFetch(LISTINGS_URL, "GET");
     renderPosts(listings);
   }
-  
-  if(filterSelect.value === "active") {
+
+  if (filterSelect.value === "active") {
     const activeListings = await doFetch(ACTIVE_URL, "GET");
     renderPosts(activeListings);
-  } 
+  }
 
-  if(filterSelect.value === "title") {
-    console.log("title")
+  if (filterSelect.value === "title") {
+    console.log("title");
 
     listings.sort(function (a, b) {
       if (a.title < b.title) {
@@ -64,8 +67,8 @@ async function filterActive() {
     renderPosts(listings);
   }
 
-  if(filterSelect.value === "username") {
-    console.log("username")
+  if (filterSelect.value === "username") {
+    console.log("username");
 
     listings.sort(function (a, b) {
       if (a.seller.name < b.seller.name) {
@@ -76,26 +79,23 @@ async function filterActive() {
       }
       return 0;
     });
-    
+
     renderPosts(listings);
   }
 
   const editPost = document.querySelectorAll("#editPost");
   editPost.forEach((post) => {
-  post.addEventListener("click", listenForEditSubmit);
+    post.addEventListener("click", listenForEditSubmit);
   });
 
   const removePost = document.querySelectorAll("#removePost");
   removePost.forEach((post) => {
-  post.addEventListener("click", deleteConfirm);
+    post.addEventListener("click", deleteConfirm);
   });
 }
 
 filterActive();
-filterSelect.addEventListener("change", filterActive)
-
-
-
+filterSelect.addEventListener("change", filterActive);
 
 //POST auction listing
 const titleInput = document.querySelector("#titleInput");
@@ -113,21 +113,21 @@ async function listItem(e) {
   const tagsArray = splitStringToArray(tagsInput.value);
   let info = {};
 
-  if(imageInput.value !== "") {
+  if (imageInput.value !== "") {
     info = {
-      "title": titleInput.value, // Required
-      "endsAt": new Date(dateInput.value), // Required - Instance of new Date()
-      "media": [imageInput.value], // Optional
-      "description": descInput.value, // Optional
-      "tags": tagsArray, // optional
-    }
+      title: titleInput.value, // Required
+      endsAt: new Date(dateInput.value), // Required - Instance of new Date()
+      media: [imageInput.value], // Optional
+      description: descInput.value, // Optional
+      tags: tagsArray, // optional
+    };
   } else {
     info = {
-      "title": titleInput.value, // Required
-      "endsAt": new Date(dateInput.value), // Required - Instance of new Date()
-      "description": descInput.value, // Optional
-      "tags": tagsArray, // optional
-    }
+      title: titleInput.value, // Required
+      endsAt: new Date(dateInput.value), // Required - Instance of new Date()
+      description: descInput.value, // Optional
+      tags: tagsArray, // optional
+    };
   }
 
   const sentPost = await doFetch(LISTING_URL, "POST", info);
@@ -141,7 +141,7 @@ async function listItem(e) {
     errorFeedback.innerHTML = ``;
   }
 
-  if(sentPost.errors) {
+  if (sentPost.errors) {
     errorFeedback.style.padding = ".5rem";
     errorFeedback.style.border = "solid 1px #bea6ff";
     errorFeedback.innerHTML = `${sentPost.errors[0].message}`;
@@ -153,27 +153,26 @@ async function listItem(e) {
 
 auctionForm.addEventListener("submit", listItem);
 
-
 //EDIT auction listing
 let myID = ""; //Variable that will hold the ID of the post you want to edit/delete
 
 async function editListing(e) {
   e.preventDefault();
 
-const titleInput = document.querySelector(`#editTitleInput${myID}`);
-const descInput = document.querySelector(`#editDescInput${myID}`);
-const imageInput = document.querySelector(`#editImageInput${myID}`);
-const tagsInput = document.querySelector(`#editTagsInput${myID}`);
+  const titleInput = document.querySelector(`#editTitleInput${myID}`);
+  const descInput = document.querySelector(`#editDescInput${myID}`);
+  const imageInput = document.querySelector(`#editImageInput${myID}`);
+  const tagsInput = document.querySelector(`#editTagsInput${myID}`);
 
   const tagsArray = splitStringToArray(tagsInput.value);
   const ID_URL = LISTING_URL + myID;
 
   const info = {
-    "title": titleInput.value, 
-    "media": [imageInput.value], 
-    "description": descInput.value, 
-    "tags": tagsArray, 
-  }
+    title: titleInput.value,
+    media: [imageInput.value],
+    description: descInput.value,
+    tags: tagsArray,
+  };
 
   const sentPost = await doFetch(ID_URL, "PUT", info);
 
@@ -186,7 +185,7 @@ const tagsInput = document.querySelector(`#editTagsInput${myID}`);
     errorFeedback.innerHTML = ``;
   }
 
-  if(sentPost.errors) {
+  if (sentPost.errors) {
     errorFeedback.style.padding = ".5rem";
     errorFeedback.style.border = "solid 1px #bea6ff";
     errorFeedback.innerHTML = `${sentPost.errors[0].message}`;
@@ -202,8 +201,6 @@ function listenForEditSubmit(e) {
   editForm.addEventListener("submit", editListing);
 }
 
-
-
 //DELETE auction listing
 async function deleteListing(id) {
   const ID_URL = LISTING_URL + id;
@@ -215,7 +212,7 @@ async function deleteListing(id) {
 function deleteConfirm(e) {
   let deleteID = e.target.value;
   const response = confirm("Are you sure you want to delete this listing?");
-  if(response) {
+  if (response) {
     deleteListing(deleteID);
   }
 }
@@ -223,6 +220,6 @@ function deleteConfirm(e) {
 //Click arrow in footer = scroll to top
 const arrowUp = document.querySelector("#arrowUp");
 
-arrowUp.onclick = function() {
-    window.scrollTo(0, 0);
-}
+arrowUp.onclick = function () {
+  window.scrollTo(0, 0);
+};

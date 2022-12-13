@@ -8,4 +8,4 @@ export const ACTIVE_URL = `${API_URL}/api/v1/auction/listings?_active=true&sort=
 export const LISTING_URL = `${API_URL}/api/v1/auction/listings/`;
 //<ID>?_seller=true&_bids=true&_active=true
 
-export const PROFILE_URL = `${API_URL}/api/v1/auction/profiles/`
+export const PROFILE_URL = `${API_URL}/api/v1/auction/profiles/`;
