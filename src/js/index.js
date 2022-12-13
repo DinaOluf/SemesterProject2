@@ -13,7 +13,22 @@ const profileImage = document.querySelector("#header-profile-icon");
 const ME_URL = PROFILE_URL + localStorage.getItem("name");
 const localProfile = await doFetch(ME_URL, "GET"); 
 
-profileImage.src = localProfile.avatar;
+if(localProfile.avatar){
+  profileImage.src = localProfile.avatar;
+}
+
+//LOG OUT
+const logOutBtn = document.querySelector("#logOut");
+
+function logOut() {
+  localStorage.removeItem("accessToken");
+  localStorage.removeItem("name");
+
+  window.location.href = "./welcome.html";
+}
+
+logOutBtn.addEventListener("click", logOut);
+
 
 //GET listings
 const listings = await doFetch(LISTINGS_URL, "GET");
@@ -72,7 +87,7 @@ async function filterActive() {
 
   const removePost = document.querySelectorAll("#removePost");
   removePost.forEach((post) => {
-  post.addEventListener("click", deleteListing);
+  post.addEventListener("click", deleteConfirm);
   });
 }
 
@@ -189,15 +204,25 @@ function listenForEditSubmit(e) {
 
 
 
-//DELETE auction listing -- Add modal
-async function deleteListing(e) {
+//DELETE auction listing
+async function deleteListing(id) {
+  const ID_URL = LISTING_URL + id;
+  await doFetch(ID_URL, "DELETE");
+
+  window.location.reload();
+}
+
+function deleteConfirm(e) {
   let deleteID = e.target.value;
-  const ID_URL = LISTING_URL + deleteID;
-
-  const sentPost = await doFetch(ID_URL, "DELETE");
-
-  if (!sentPost.errors) {
-    window.location.reload();
+  const response = confirm("Are you sure you want to delete this listing?");
+  if(response) {
+    deleteListing(deleteID);
   }
 }
 
+//Click arrow in footer = scroll to top
+const arrowUp = document.querySelector("#arrowUp");
+
+arrowUp.onclick = function() {
+    window.scrollTo(0, 0);
+}

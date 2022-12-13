@@ -17,7 +17,10 @@ const localUser = localStorage.getItem("name");
 const USER_URL = PROFILE_URL + localUser;
 const user = await doFetch(USER_URL, "GET");
 const headerProfileIcon = document.querySelector("#header-profile-icon");
-headerProfileIcon.src = user.avatar;
+
+if(user.avatar){
+  headerProfileIcon.src = user.avatar;
+}
 
 if(!profileName || profileName === localUser) {
     const MY_URL = PROFILE_URL + localUser + "?_listings=true";
@@ -31,7 +34,7 @@ if(!profileName || profileName === localUser) {
   
     const removePost = document.querySelectorAll("#removePost");
     removePost.forEach((post) => {
-    post.addEventListener("click", deleteListing);
+    post.addEventListener("click", deleteConfirm);
     });
 
 } else {
@@ -39,6 +42,18 @@ if(!profileName || profileName === localUser) {
     const profile = await doFetch(MY_URL, "GET");
     renderProfile(profile);
 }
+
+//LOG OUT
+const logOutBtn = document.querySelector("#logOut");
+
+function logOut() {
+  localStorage.removeItem("accessToken");
+  localStorage.removeItem("name");
+
+  window.location.href = "./welcome.html";
+}
+
+logOutBtn.addEventListener("click", logOut);
 
 //EDIT profile Image
   if (!profileName || profileName === localUser) {
@@ -132,14 +147,25 @@ function listenForEditSubmit(e) {
 
 
 
-//DELETE auction listing -- Add modal
-async function deleteListing(e) {
+//DELETE auction listing
+async function deleteListing(id) {
+  const ID_URL = LISTING_URL + id;
+  await doFetch(ID_URL, "DELETE");
+
+  window.location.reload();
+}
+
+function deleteConfirm(e) {
   let deleteID = e.target.value;
-  const ID_URL = LISTING_URL + deleteID;
-
-  const sentPost = await doFetch(ID_URL, "DELETE");
-
-  if (!sentPost.errors) {
-    window.location.reload();
+  const response = confirm("Are you sure you want to delete this listing?");
+  if(response) {
+    deleteListing(deleteID);
   }
+}
+
+//Click arrow in footer = scroll to top
+const arrowUp = document.querySelector("#arrowUp");
+
+arrowUp.onclick = function() {
+    window.scrollTo(0, 0);
 }

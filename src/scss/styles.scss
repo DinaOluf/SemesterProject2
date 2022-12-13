@@ -39,6 +39,10 @@ header {
   }
 }
 
+#arrowUp {
+  cursor: pointer;
+}
+
 form {
   & #header-search-icon {
     max-height: 2rem;
@@ -254,8 +258,8 @@ form {
 
         & #profileImage {
           margin-left: 0.5rem;
-          height: 8rem;
-          width: 8rem;
+          height: 7rem;
+          width: 7rem;
         }
       }
     }

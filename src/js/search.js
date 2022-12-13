@@ -20,26 +20,47 @@ if(localStorage.getItem("accessToken")){
     aria-haspopup="true"
     aria-expanded="false"
   >
-    <img
-      src="${localProfile.avatar}"
-      alt="Empty profile picture, as well as dropdown menu"
-      id="header-profile-icon"
-      class="rounded-circle"
-    />
+  ${
+    localProfile.avatar
+    ? `<img
+    src="${localProfile.avatar}"
+    alt="Empty profile picture, as well as dropdown menu"
+    id="header-profile-icon"
+    class="rounded-circle"
+    onerror="this.src='./assets/icons/profile-icon.png'"
+  />`
+    : `<img
+    src="./assets/icons/profile-icon.png"
+    alt="Empty profile picture, as well as dropdown menu"
+    id="header-profile-icon"
+    class="rounded-circle"
+  />`
+  }
   </a>
   <ul
     class="dropdown-menu dropdown-menu-end"
     aria-labelledby="dropdownAccountButton"
   >
     <li><a class="dropdown-item" href="/profile.html">Profile</a></li>
-    <li><a class="dropdown-item" href="">Log Out</a></li>
+    <li class="dropdown-item" id="logOut">Log Out</li>
   </ul>`
+
+  const logOutBtn = document.querySelector("#logOut");
+  logOutBtn.addEventListener("click", logOut);
 } else {
     headerSideWrap.innerHTML = `<a
     class="btn btn-primary me-2 text-secondary border border-secondary"
     href="./login.html"
     >Log in</a
   >`
+}
+
+
+function logOut() {
+  localStorage.removeItem("accessToken");
+  localStorage.removeItem("name");
+
+  window.location.href = "./welcome.html";
 }
 
 //Show search term in heading
@@ -49,7 +70,6 @@ searchHeading.innerHTML = `Search "${search}"`
 
 //GET listings
 const listings = await doFetch(ACTIVE_URL, "GET");
-console.log(listings); //Remove later
 
 const searchedListings = [];
 
@@ -88,3 +108,9 @@ if(searchedListings.length === 0) {
     postsContainer.classList.add("text-secondary", "text-center");
 }
 
+//Click arrow in footer = scroll to top
+const arrowUp = document.querySelector("#arrowUp");
+
+arrowUp.onclick = function() {
+    window.scrollTo(0, 0);
+}

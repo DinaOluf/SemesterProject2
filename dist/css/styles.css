@@ -10831,6 +10831,10 @@ header #logOut {
   cursor: pointer;
 }
 
+#arrowUp {
+  cursor: pointer;
+}
+
 form #header-search-icon {
   max-height: 2rem;
   max-width: 2rem;
@@ -10998,8 +11002,8 @@ form .form-control:focus, form .search-input:focus {
   }
   #profile #profileBorder #profileCard #profileImage {
     margin-left: 0.5rem;
-    height: 8rem;
-    width: 8rem;
+    height: 7rem;
+    width: 7rem;
   }
 }
 @media (max-width: 575px) {

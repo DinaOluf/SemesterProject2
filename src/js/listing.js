@@ -17,12 +17,26 @@ if (!localStorage.getItem("accessToken")) {
   window.location.href = "./welcome.html";
 }
 
+//LOG OUT
+const logOutBtn = document.querySelector("#logOut");
+
+function logOut() {
+  localStorage.removeItem("accessToken");
+  localStorage.removeItem("name");
+
+  window.location.href = "./welcome.html";
+}
+
+logOutBtn.addEventListener("click", logOut);
+
 //Display profile image in heading
 const profileImage = document.querySelector("#header-profile-icon");
 const ME_URL = PROFILE_URL + localUserName;
 const localProfile = await doFetch(ME_URL, "GET"); 
 
-profileImage.src = localProfile.avatar;
+if(localProfile.avatar){
+  profileImage.src = localProfile.avatar;
+}
 
 //Get listing
 const LISTING_ID_URL = LISTING_URL + id + "?_seller=true&_bids=true";
@@ -235,7 +249,7 @@ const makeBidContainer = document.querySelector(".make-bid");
   </div>`
 } if(localUserName === listing.seller.name) {
     makeBidContainer.innerHTML = "";
-} else {
+} else if(new Date(listing.endsAt) > new Date()) {
     makeBidContainer.innerHTML = `<h2 class="fs-3 text-uppercase">Want to make a bid?</h2>
     <div class="card bg-dark py-3 px-4">
       <div id="bidFeedback" class="d-flex justify-content-center text-center rounded text-danger border-danger"></div>
@@ -332,19 +346,30 @@ editPost.addEventListener("click", listenForEditSubmit);
 }
 
 
-//DELETE auction listing -- Add "are you sure?"-modal
-async function deleteListing(e) {
-  const deleteID = e.target.value;
-  const ID_URL = LISTING_URL + deleteID;
+//DELETE auction listing 
+async function deleteListing(id) {
+  const ID_URL = LISTING_URL + id;
+  await doFetch(ID_URL, "DELETE");
 
-  const sentPost = await doFetch(ID_URL, "DELETE");
+  window.location.href = "./index.html";
+}
 
-  if (!sentPost.errors) {
-    window.location.reload();
+function deleteConfirm(e) {
+  let deleteID = e.target.value;
+  const response = confirm("Are you sure you want to delete this listing?");
+  if(response) {
+    deleteListing(deleteID);
   }
 }
 
 if(localStorage.getItem("name") === listing.seller.name) {
     const removePost = document.querySelector("#removePost");
-    removePost.addEventListener("click", deleteListing);
+    removePost.addEventListener("click", deleteConfirm);
+}
+
+//Click arrow in footer = scroll to top
+const arrowUp = document.querySelector("#arrowUp");
+
+arrowUp.onclick = function() {
+    window.scrollTo(0, 0);
 }
