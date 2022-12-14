@@ -36,7 +36,6 @@ logOutBtn.addEventListener("click", logOut);
 
 //GET listings
 const listings = await doFetch(LISTINGS_URL, "GET");
-console.log(listings); //Remove later
 
 //Filter by active only
 const filterSelect = document.querySelector("#filterSelect");
@@ -52,8 +51,6 @@ async function filterActive() {
   }
 
   if (filterSelect.value === "title") {
-    console.log("title");
-
     listings.sort(function (a, b) {
       if (a.title < b.title) {
         return -1;
@@ -68,8 +65,6 @@ async function filterActive() {
   }
 
   if (filterSelect.value === "username") {
-    console.log("username");
-
     listings.sort(function (a, b) {
       if (a.seller.name < b.seller.name) {
         return -1;

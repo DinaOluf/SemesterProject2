@@ -102,7 +102,6 @@ function filterSearch(listings) {
 filterSearch(listings);
 
 if (searchedListings.length === 0) {
-  console.log(`no listings containing ${search}`);
   const postsContainer = document.querySelector(".posts-container");
   postsContainer.innerHTML = `(0 results)`;
   postsContainer.classList.add("text-secondary", "text-center");

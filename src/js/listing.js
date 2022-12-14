@@ -41,7 +41,6 @@ if (localProfile.avatar) {
 //Get listing
 const LISTING_ID_URL = LISTING_URL + id + "?_seller=true&_bids=true";
 const listing = await doFetch(LISTING_ID_URL, "GET");
-console.log(listing);
 
 //Place title
 const listingName = document.querySelector("#listingName");
@@ -287,7 +286,6 @@ async function makeBid(e) {
   };
 
   const postBid = await doFetch(BID_URL, "POST", bid);
-  console.log(postBid);
   if (postBid.errors) {
     bidFeedback.style.padding = ".5rem";
     bidFeedback.style.border = "solid 1px #bea6ff";
