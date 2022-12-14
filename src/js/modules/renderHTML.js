@@ -242,37 +242,6 @@ export function renderPosts(posts) {
   }
 }
 
-// ... ignore!! Here for reference.
-
-// const cardDiv = document.createElement("div");
-// const tagsOptionsWrap = document.createElement("div");
-// const tagsWrap = document.createElement("div");
-// const options = document.createElement("div");
-// const avatarNameItem = document.createElement("div");
-// const avatarName = document.createElement("div");
-
-// cardDiv.className = "card bg-dark py-2";
-// tagsOptionsWrap.className = "d-flex justify-content-between";
-// tagsWrap.id = "tags";
-// tagsWrap.className = "px-2";
-// options.className = "owners-options mx-2";
-// avatarNameItem.className = "ps-2 d-flex align-items-center";
-// avatarName.className = "d-flex align-items-center text-secondary avatar-name";
-
-// postsContainer.appendChild(cardDiv);
-
-// //tags and options
-// cardDiv.appendChild[i](tagsOptionsWrap);
-// tagsOptionsWrap.appendChild(tagsWrap);
-// tagsOptionsWrap.appendChild(options);
-
-// //avatar, name and item
-// cardDiv.appendChild(avatarNameItem);
-// avatarNameItem.appendChild(avatarName);
-
-// // postsContainer.innerHTML += `
-// //     `
-
 export function renderSearchPosts(posts) {
   const postsContainer = document.querySelector(".posts-container");
   postsContainer.innerHTML = "";
