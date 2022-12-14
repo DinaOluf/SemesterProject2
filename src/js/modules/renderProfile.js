@@ -1,8 +1,6 @@
 import { renderPostsWoBids } from "./renderHTML.js";
 
 export function renderProfile(profile) {
-  console.log(profile);
-
   //Place profile Image if any
   const profileImage = document.querySelector("#profileImage");
   profileImage.classList.remove("placeholder");
