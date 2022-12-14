@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Search for pearls and other hidden treasures in the big ocean of auctions on Pearls." />
+    <meta author="Dina Olufsen" />
+    <title>Pearls | Search</title>
+    <link rel="stylesheet" href="./dist/css/styles.css" />
+  </head>
+  <body id="search" class="d-flex flex-column min-vh-100">
+    <header class="d-flex navbar bg-dark justify-content-between">
+      <div class="row navbar-brand align-items-center mx-0 w-75">
+        <a
+          href="./index.html"
+          class="col-3 col-sm-5 col-lg-4 col-xxl-3 d-flex align-items-center text-decoration-none"
+        >
+          <img src="./assets/icons/light-pearl-icon.png" id="brand-icon" />
+          <span
+            id="brand-name"
+            class="d-none d-sm-block h1 mb-0 mt-2 ms-2 text-light text-uppercase"
+            >Pearls</span
+          >
+        </a>
+        <div class="col-8 col-sm-6 col-md-5 col-lg-4 col-xxl-3">
+          <form
+            id="searchForm"
+            class="d-flex bg-secondary rounded h-100 p-1 align-items-center"
+          >
+            <img
+              src="./assets/icons/search-icon.png"
+              id="header-search-icon"
+              class="search-icon p-0"
+            />
+            <input
+              id="searchInput"
+              class="bg-secondary text-dark search-input form-control"
+            />
+          </form>
+        </div>
+      </div>
+      <div
+        id="headerSideWrap"
+        class="d-flex nav-item dropdown w-25 justify-content-end"
+      ></div>
+    </header>
+    <main class="container my-4">
+      <div class="row justify-content-center">
+        <div class="col-11 col-md-9">
+          <h1 class="text-uppercase placeholder-glow">
+            Ocean of Auctions
+            <span
+              id="searchHeading"
+              class="text-capitalize text-secondary fs-4 placeholder"
+              >Search ""</span
+            >
+          </h1>
+          <div class="posts-container">
+            <div class="card bg-dark py-2 placeholder-glow">
+              <div class="d-flex justify-content-between">
+                <div id="tags" class="px-2"></div>
+                <div class="owners-options mx-2"></div>
+              </div>
+              <div class="ps-2 d-flex align-items-center">
+                <div class="d-flex align-items-center text-secondary">
+                  <img
+                    id="userImage"
+                    class="profile-images placeholder rounded-circle"
+                  />
+                  <h2 id="userName" class="h3 m-0 ms-2 fs-4 placeholder">
+                    Name
+                  </h2>
+                </div>
+              </div>
+              <div
+                class="listings-images mt-2 w-100 overflow-hidden position-relative"
+              >
+                <img
+                  class="position-absolute bottom-0 placeholder text-secondary"
+                />
+              </div>
+              <div class="listings-descriptions mx-2 mt-2 placeholder">
+                Description
+              </div>
+              <div class="text-secondary mx-2 mt-2 d-flex">
+                <div class="bids-count me-1 placeholder">1 bid(s) -</div>
+                <div class="dates-end placeholder">End: 23:59 18/12/2022</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer
+      class="bg-dark d-flex justify-content-between align-items-center py-2 px-4 mt-auto"
+    >
+      <div class="fs-6">© Dina Olufsen - 2022</div>
+      <div id="arrowUp" class="fs-3">🡱</div>
+    </footer>
+    <script src="./node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="module" src="./src/js/search.js"></script>
+    <script type="module" src="./src/js/modules/searchSubmit.js"></script>
+  </body>
+</html>

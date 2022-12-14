@@ -1,0 +1,52 @@
+@font-face {
+  font-family: "Aqua";
+  src: url("../../assets/fonts/aqua.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Merriweather";
+  src: url("../../assets/fonts/merriweather.regular.ttf") format("truetype");
+}
+
+//COLOURS
+
+$primary: #002747;
+$secondary: #8fcbeb;
+$danger: #bea6ff;
+$light: #ffffff;
+$dark: #292c35;
+
+//LINKS
+
+$link-color: $secondary;
+
+//FONTS
+
+$body-color: $light;
+
+h1,
+h2 {
+  font-family: "Aqua", Tahoma, "Segoe UI", Geneva, Verdana, sans-serif;
+}
+
+h3,
+h4,
+h5,
+p,
+li,
+span,
+div,
+form {
+  font-family: "Merriweather", Georgia, "Times New Roman", Times, serif;
+}
+
+//ACCORDION
+
+$accordion-color: $light; // Sass variable because of $accordion-button-icon
+$accordion-bg: $dark;
+$accordion-border-color: $dark;
+
+$accordion-button-active-bg: $dark;
+$accordion-button-active-color: $light;
+
+$accordion-button-focus-box-shadow: $light;

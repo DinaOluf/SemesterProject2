@@ -1,0 +1,317 @@
+@import "./variables";
+@import "./form-check";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+//GLOBAL STYLING
+body {
+  background: rgb(0, 39, 71);
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(0, 39, 71, 1) 0%,
+    rgba(0, 80, 146, 1) 100%
+  );
+  background: linear-gradient(
+    0deg,
+    rgba(0, 39, 71, 1) 0%,
+    rgba(0, 80, 146, 1) 100%
+  );
+}
+
+header {
+  z-index: 5;
+  & #brand-icon {
+    height: 4rem;
+  }
+
+  & .dropdown-toggle {
+    width: 4rem;
+    & #header-profile-icon {
+      height: 4rem;
+      width: 4rem;
+    }
+    &::after {
+      border: none;
+    }
+  }
+
+  & #logOut {
+    cursor: pointer;
+  }
+}
+
+#arrowUp {
+  cursor: pointer;
+}
+
+form {
+  & #header-search-icon {
+    max-height: 2rem;
+    max-width: 2rem;
+  }
+
+  & .form-control,
+  & .search-input {
+    border: none;
+    width: 100%;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
+
+#bg-image {
+  min-height: 100%;
+  width: 40%;
+  background-image: url("../../assets/images/pearls-ring.jpg");
+  background-size: cover;
+  background-position-y: bottom;
+  background-position-x: 45%;
+  z-index: 1;
+}
+
+.profile-images {
+  height: 3rem;
+  width: 3rem;
+}
+
+.listings-images {
+  min-height: 28rem;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    min-height: 100%;
+  }
+}
+
+.name-and-title {
+  align-items: center;
+}
+
+.dropdown-toggle {
+  &::after {
+    border: none;
+  }
+}
+
+.currency-icon {
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+// WELCOME
+#welcome {
+  & main {
+    & #welcome-text {
+      max-width: 100%;
+    }
+
+    & #big-image {
+      & img {
+        object-fit: cover;
+        min-height: 110%;
+        min-width: 100%;
+        transform: translateY(-18%);
+      }
+    }
+
+    & #search-icon {
+      max-height: 2rem;
+      max-width: 2rem;
+
+      & .search-input {
+        width: 100%;
+        border: none;
+      }
+    }
+
+    & #welcome-login {
+      max-width: 100%;
+    }
+  }
+}
+
+// LOGIN & SIGNUP
+#login,
+#signup {
+  & .container {
+    z-index: 4;
+  }
+
+  & #nameFeedback,
+  & #emailFeedback,
+  & #passwordFeedback {
+    color: $secondary;
+  }
+}
+
+// LISTING
+#listing {
+  & #bidBtn {
+    max-width: 8rem;
+  }
+
+  & .listing-image {
+    height: 38rem;
+
+    & img {
+      object-fit: cover;
+      width: 100%;
+      min-height: 100%;
+    }
+  }
+}
+
+//PROFILE
+#profile {
+  & #profileImage {
+    height: 5rem;
+    width: 5rem;
+  }
+
+  & #imageOption {
+    left: 0;
+  }
+}
+
+@media (max-width: 766px) {
+  #brand-name {
+    font-size: 1.3em;
+  }
+
+  form {
+    max-height: 4rem;
+    & #header-search-icon {
+      height: 2rem;
+      width: 2rem;
+    }
+    & .search-input {
+      max-height: 2rem;
+    }
+  }
+
+  .name-and-title {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  #welcome {
+    & header {
+      & .navbar-brand {
+        width: 50% !important;
+      }
+      & .nav-item {
+        width: 50% !important;
+      }
+    }
+
+    & main {
+      flex-direction: column !important;
+      align-items: flex-end;
+      margin-right: 0rem;
+
+      & #big-image {
+        border-radius: 0 0 50% 50%;
+        padding: 0;
+        height: 17rem;
+        & img {
+          height: 17rem;
+          transform: translateY(-6%);
+        }
+      }
+
+      & #welcome-text {
+        height: 50% !important;
+        margin-right: 0.5rem !important;
+
+        & #welcome-login {
+          align-items: center;
+          margin-left: 0 !important;
+        }
+
+        & h2 {
+          font-size: 1.3rem !important;
+        }
+
+        & p,
+        span {
+          font-size: 1.1rem !important;
+        }
+
+        & .justify-content-evenly {
+          max-width: 20rem;
+          width: 100% !important;
+        }
+      }
+    }
+  }
+
+  //PROFILE
+  #profile {
+    & #profileBorder {
+      border-right: 0 !important;
+      margin-bottom: 2rem;
+
+      & #profileCard {
+        border-radius: 0 10px 10px 0;
+
+        & #profileImage {
+          margin-left: 0.5rem;
+          height: 7rem;
+          width: 7rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  header {
+    & #brand-icon {
+      height: 3rem;
+    }
+
+    & .dropdown-toggle {
+      width: 3rem;
+      height: 3rem;
+
+      & #header-profile-icon {
+        height: 3rem;
+        width: 3rem;
+      }
+    }
+  }
+
+  .listings-images {
+    height: 16rem;
+  }
+
+  #login,
+  #signup {
+    #bg-image {
+      width: 50%;
+    }
+
+    & form {
+      font-size: 0.8em;
+
+      & #rememberCheck {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+  }
+
+  #listing {
+    & .listing-image {
+      max-height: 20rem;
+    }
+
+    & .make-bid {
+      & h2 {
+        font-size: 1.45rem;
+      }
+    }
+  }
+}
