@@ -1,6 +1,6 @@
 {
   "name": "semesterproject2",
-  "version": "0.2.0",
+  "version": "1.2.1",
   "description": "An auction website",
   "main": "index.js",
   "scripts": {
