@@ -41,7 +41,7 @@ if (localStorage.getItem("accessToken")) {
     class="dropdown-menu dropdown-menu-end"
     aria-labelledby="dropdownAccountButton"
   >
-    <li><a class="dropdown-item" href="/profile.html">Profile</a></li>
+    <li><a class="dropdown-item" href="./profile.html">Profile</a></li>
     <li class="dropdown-item" id="logOut">Log Out</li>
   </ul>`;
 
