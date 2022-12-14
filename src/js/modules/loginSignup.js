@@ -1,10 +1,10 @@
 /**
- * Sign up user
+ * Sign up/logs in user
  * @param {string} url the url to the API endpoint
  * @param {object} userData an object with name, email, password
  * @example
  * ```js
- * // Use this function to sign up a user
+ * // Use this function to sign up/log in a user
  * loginSignup(url, userData);
  * ```
  */

@@ -7,11 +7,9 @@
  * @example
  * ```js
  * // Use this function to fetch from the API endpoint.
- * const data = await doFetch(API_URL, "GET", info);
+ * const data = await doFetch(API_URL, "GET", infoObject);
  * ```
  */
-
-//DOUBLE CHECK JSDocs
 
 export async function doFetch(url, method, info) {
   try {
