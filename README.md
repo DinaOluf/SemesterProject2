@@ -1,4 +1,4 @@
-**© ALL RIGHTS RESERVED** - contact me for inquiries.
+**LICENSE:** Boost Software License - Version 1.0 
 
 # [Pearls](https://dinaoluf.github.io/SemesterProject2/) (Semester Project 2)
 
