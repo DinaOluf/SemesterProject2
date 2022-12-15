@@ -1,5 +1,3 @@
-**LICENSE:** Boost Software License - Version 1.0 
-
 # [Pearls](https://dinaoluf.github.io/SemesterProject2/) (Semester Project 2)
 
 ![bilde](https://user-images.githubusercontent.com/91533917/207824570-30b533b9-7943-490a-964b-5aca6ed921c9.png)
@@ -40,7 +38,7 @@ Site Architecture:
 
 ### Installing
 
-1. Clone the repo:
+Clone the repo:
 
 ```bash
 git clone git@github.com:DinaOluf/SemesterProject2.git
@@ -65,6 +63,11 @@ If you have a suggestion that would make this better, please fork the repo and c
 ## Contact
 
 [My LinkedIn page](https://www.linkedin.com/in/dina-olufsen-42922721a/)
+
+
+## License
+
+This project is licensed under the [Boost Software License - Version 1.0](https://www.boost.org/LICENSE_1_0.txt)
 
 
 ## Acknowledgments
