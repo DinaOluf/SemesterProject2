@@ -38,7 +38,7 @@ Site Architecture:
 
 ### Installing
 
-1. Clone the repo:
+Clone the repo:
 
 ```bash
 git clone git@github.com:DinaOluf/SemesterProject2.git
