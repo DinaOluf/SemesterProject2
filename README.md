@@ -46,7 +46,7 @@ Site Architecture:
 git clone git@github.com:DinaOluf/SemesterProject2.git
 ```
 
-###Running
+### Running
 
 1. Install dependencies
 ```bash
