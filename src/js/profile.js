@@ -26,6 +26,7 @@ if (!profileName || profileName === localUser) {
   const MY_URL = PROFILE_URL + localUser + "?_listings=true";
   const profile = await doFetch(MY_URL, "GET");
   renderProfile(profile);
+  document.title = "Pearls | Profile | " + profile.name;
 
   const editPost = document.querySelectorAll("#editPost");
   editPost.forEach((post) => {
@@ -40,6 +41,7 @@ if (!profileName || profileName === localUser) {
   const MY_URL = PROFILE_URL + profileName + "?_listings=true";
   const profile = await doFetch(MY_URL, "GET");
   renderProfile(profile);
+  document.title = "Pearls | Profile | " + profile.name;
 }
 
 //LOG OUT
