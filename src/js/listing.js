@@ -41,6 +41,7 @@ if (localProfile.avatar) {
 //Get listing
 const LISTING_ID_URL = LISTING_URL + id + "?_seller=true&_bids=true";
 const listing = await doFetch(LISTING_ID_URL, "GET");
+document.title = "Pearls | listing | " + listing.title;
 
 //Place title
 const listingName = document.querySelector("#listingName");
@@ -51,7 +52,7 @@ listingName.innerHTML = listing.title;
 const tagsContainer = document.querySelector("#tags");
 
 for (let i = 0; i < listing.tags.length; i++) {
-  if (listing.tags.length > 0) {
+  if (listing.tags.length > 0 && listing.tags[0] !== "") {
     tagsContainer.innerHTML += `<div
         class="badge bg-secondary text-primary text-lowercase rounded-pill px-3 py-2 mx-1 m-auto"
       >

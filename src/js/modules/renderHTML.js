@@ -193,7 +193,7 @@ export function renderPosts(posts) {
                 </div>
                 <a href="./listing.html?id=${
                   posts[i].id
-                }" class="text-light text-decoration-none ms-1 my-2 fs-4 ps-2 border-start">${
+                }" class="text-light text-decoration-none ms-1 my-2 fs-4 ps-2 border-start text-break">${
       posts[i].title
     }</a>
               </div>
@@ -331,7 +331,7 @@ export function renderSearchPosts(posts) {
                   </div>
                   <a href="./listing.html?id=${
                     posts[i].id
-                  }" class="text-light text-decoration-none ms-1 my-2 ps-2 border-start fs-4">${
+                  }" class="text-light text-decoration-none ms-1 my-2 ps-2 border-start fs-4 text-break">${
         posts[i].title
       }</a>
                 </div>
@@ -459,7 +459,7 @@ export function renderSearchPosts(posts) {
                     </h2>
                     </div>
                   </div>
-                  <span class="text-light text-decoration-none ms-1 my-2 ps-2 border-start fs-4">${
+                  <span class="text-light text-decoration-none ms-1 my-2 ps-2 border-start fs-4 text-break">${
                     posts[i].title
                   }</span>
                 </div>
@@ -712,7 +712,7 @@ export function renderPostsWoBids(user) {
                   </div>
                   <a href="./listing.html?id=${
                     user.listings[i].id
-                  }" class="text-light text-decoration-none ms-1 ps-2 border-start my-2 fs-4">${
+                  }" class="text-light text-decoration-none ms-1 ps-2 border-start my-2 fs-4 text-break">${
         user.listings[i].title
       }</a>
                 </div>
